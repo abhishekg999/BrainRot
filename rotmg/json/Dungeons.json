@@ -1,0 +1,342 @@
+{
+  "Dungeon": [
+    {
+      "id": "Nexus Explanation",
+      "Width": "256",
+      "Height": "256",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "Room": {
+        "id": "start",
+        "LocalJM": "nexus_tutorial_new/nexusMarket_fullTutorial_challenger.jm"
+      }
+    },
+    {
+      "id": "Nexus",
+      "Width": "256",
+      "Height": "256",
+      "DefaultTile": "Space",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "GlobalReplaceTile": [
+        {
+          "_": "White Floor 2",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 3",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 4",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 5",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        }
+      ],
+      "Room": {
+        "id": "start",
+        "LocalJM": "nexus_original_challenger.jm"
+      }
+    },
+    {
+      "id": "Vault",
+      "Width": "128",
+      "Height": "128",
+      "Background": "2",
+      "DefaultTile": "Space",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "GlobalReplaceTile": [
+        {
+          "_": "White Floor 2",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 3",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 4",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 5",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        }
+      ],
+      "Room": {
+        "id": "start",
+        "LocalJM": "vault_challenger_20.jm"
+      }
+    },
+    {
+      "id": "Daily Quest Room",
+      "DisplayId": "Daily Quest Room",
+      "Width": "32",
+      "Height": "32",
+      "CenterStartRoom": "",
+      "Visibility": "Path",
+      "WallObj": {
+        "Obj": "Cave Wall"
+      },
+      "WallTile": "Composite",
+      "SurroundWith": "Dark Cobblestone",
+      "NoPlayerTeleport": "",
+      "NoSave": "",
+      "NoTrade": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "daily_quests_and_login.jm"
+      }
+    },
+    {
+      "id": "Daily Login Room",
+      "DisplayId": "The Login Tinkerer",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Path",
+      "WallObj": {
+        "Obj": "Cave Wall"
+      },
+      "WallTile": "Composite",
+      "SurroundWith": "Dark Cobblestone",
+      "NoPlayerTeleport": "",
+      "NoSave": "",
+      "NoTrade": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "daily_login.jm"
+      }
+    },
+    {
+      "id": "Guild Hall",
+      "DisplayId": "Guild Hall",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "guild_hall/1.jm",
+        "Enemies": {
+          "Enemy": {
+            "_": "Guill",
+            "minNum": "1",
+            "maxNum": "1"
+          }
+        }
+      }
+    },
+    {
+      "id": "Guild Hall 2",
+      "DisplayId": "Guild Hall",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "guild_hall/2_new.jm",
+        "Enemies": {
+          "Enemy": {
+            "_": "Guill",
+            "minNum": "1",
+            "maxNum": "1"
+          }
+        }
+      }
+    },
+    {
+      "id": "Guild Hall 3",
+      "DisplayId": "Guild Hall",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "guild_hall/3_new.jm",
+        "Enemies": {
+          "Enemy": {
+            "_": "Guill",
+            "minNum": "1",
+            "maxNum": "1"
+          }
+        }
+      }
+    },
+    {
+      "id": "Guild Hall 4",
+      "DisplayId": "Guild Hall",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "guild_hall/4_new.jm",
+        "Enemies": {
+          "Enemy": {
+            "_": "Guill",
+            "minNum": "1",
+            "maxNum": "1"
+          }
+        }
+      }
+    },
+    {
+      "id": "Cloth Bazaar",
+      "PlayerLimit": "150",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "GlobalReplaceTile": [
+        {
+          "_": "White Floor 2",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 3",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 4",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        },
+        {
+          "_": "White Floor 5",
+          "func": "perlinProb",
+          "dx": ".01",
+          "dy": ".01",
+          "mult": "0.40",
+          "groundRestrict": "White Floor 1"
+        }
+      ],
+      "Room": {
+        "id": "start",
+        "LocalJM": "cloth_bazaar.jm"
+      }
+    },
+    {
+      "id": "Pet Yard",
+      "DisplayId": "Pet Yard",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "pet_yard/petYard_1.jm"
+      }
+    },
+    {
+      "id": "Pet Yard 2",
+      "DisplayId": "Pet Yard",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "pet_yard/petYard_2.jm"
+      }
+    },
+    {
+      "id": "Pet Yard 3",
+      "DisplayId": "Pet Yard",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "pet_yard/petYard_3.jm"
+      }
+    },
+    {
+      "id": "Pet Yard 4",
+      "DisplayId": "Pet Yard",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "pet_yard/petYard_4.jm"
+      }
+    },
+    {
+      "id": "Pet Yard 5",
+      "DisplayId": "Pet Yard",
+      "Width": "64",
+      "Height": "64",
+      "CenterStartRoom": "",
+      "Visibility": "Full",
+      "ShowDisplays": "",
+      "Room": {
+        "id": "start",
+        "LocalJM": "pet_yard/petYard_5.jm"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "brainrot",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev-bundle": "bun build ./src/main.ts --outdir=./static/js --target=browser --watch",
+    "dev": "bun build ./src/main.ts --outdir=./static/js --target=browser && python -m http.server"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "phaser": "^3.70.0",
+    "socket.io-client": "^4.7.2"
+  }
+}

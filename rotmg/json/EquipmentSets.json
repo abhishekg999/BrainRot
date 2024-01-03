@@ -1,0 +1,3851 @@
+{
+  "EquipmentSet": [
+    {
+      "type": "0x4dfd",
+      "id": "Angelic Bard Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x4df9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4dfa"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4dfb"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4dfc"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4e00",
+          "size": "80",
+          "color": "0x80D4FF",
+          "bulletType": "Harp Notes Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ]
+    },
+    {
+      "type": "0x049c",
+      "id": "Loaded Core",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x0498"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "9"
+        }
+      ]
+    },
+    {
+      "type": "0x049b",
+      "id": "Entropy Reactor",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x049a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "9"
+        }
+      ]
+    },
+    {
+      "type": "0x6457",
+      "id": "Alien Core: Power",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6456"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "7"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "7"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x0488",
+      "id": "Alien Core: Warp",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6465"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x0489",
+      "id": "Alien Core: Corrosion",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6466"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "45"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "9"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        }
+      ]
+    },
+    {
+      "type": "0x048a",
+      "id": "Alien Core: Dark Matter",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6467"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6458"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x645f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6460"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6461"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6462"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6463"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6464"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x0483"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "65"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "65"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x0001",
+      "id": "Oryx Awesome Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x2337"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2339"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x2338"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x2302"
+        }
+      ],
+      "ActivateOnEquipAll": {
+        "_": "ChangeSkin",
+        "skinType": "0x0401",
+        "size": "80",
+        "color": "0x92A9BA"
+      }
+    },
+    {
+      "type": "0x5be2",
+      "id": "Oryx's Battle Attires",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x5bde"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5be0"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x5bdf"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x5be1"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x0401",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Knight DPS Big Bolt"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "75"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip2": {
+        "_": "IncrementStat",
+        "stat": "20",
+        "amount": "5"
+      }
+    },
+    {
+      "type": "0x0002",
+      "id": "Priest of Geb Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x235F"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x235E"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x235C"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x235D"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x745A",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Great Geb Shot"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "50"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "8"
+        }
+      ],
+      "ActivateOnEquip2": {
+        "_": "IncrementStat",
+        "stat": "22",
+        "amount": "5"
+      }
+    },
+    {
+      "type": "0x2756",
+      "id": "Mad God's Messenger Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x200c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x200d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x200e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x200f"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0xf3b",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Mega Mad God Missile"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "100"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ]
+    },
+    {
+      "type": "0x0005",
+      "id": "Legacy Skuld 2 The ReGhostening Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x21a0"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x21a2"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x21a1"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x21a3"
+        }
+      ],
+      "ActivateOnEquipAll": {
+        "_": "ChangeSkin",
+        "skinType": "0x21a6",
+        "size": "80",
+        "color": "0x92A9BA",
+        "bulletType": "Spooky Sparkle 9000"
+      }
+    },
+    {
+      "type": "0x2754",
+      "id": "Skuld 2 The ReGhostening Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x2750"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2751"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x2752"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x2753"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x21a6",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Spooky Sparkle 9000"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "80"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        }
+      ]
+    },
+    {
+      "type": "0x7a00",
+      "id": "Dragon Tamer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x7fbc"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x7fbb"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x7fb9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x7fba"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x7fce",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Dragon Arrow"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "75"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "80"
+        }
+      ]
+    },
+    {
+      "type": "0x21d9",
+      "id": "Pirate King Warrior Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x21d9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x21da"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x21db"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x21dc"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x21df",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Pirate King Booty"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "100"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "-30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "-20"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "100"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "80"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "70"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        }
+      ]
+    },
+    {
+      "type": "0x0006",
+      "id": "Twilight Archmage Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x21f3"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x21f4"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x21f5"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x21f6"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x0402",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Morer Ancienter Magic"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ]
+    },
+    {
+      "type": "0x21f7",
+      "id": "Legacy Twilight Archmage Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x21a7"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x21a9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x21a8"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x21aa"
+        }
+      ],
+      "ActivateOnEquipAll": {
+        "_": "ChangeSkin",
+        "skinType": "0x0402",
+        "size": "80",
+        "color": "0x92A9BA",
+        "bulletType": "Morer Ancienter Magic"
+      }
+    },
+    {
+      "type": "0x1e48",
+      "id": "Phantom Archer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1e44"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x1e45"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x1e46"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x1e47"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x1e59",
+          "size": "80",
+          "color": "0x1a4a6b",
+          "bulletType": "Archer ST Arrow Big"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "105"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "6"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "95"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "11"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x04a3",
+      "id": "Legacy Swoll Paladin Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x2367"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2366"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x2364"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x2365"
+        }
+      ],
+      "ActivateOnEquipAll": {
+        "_": "ChangeSkin",
+        "skinType": "0x745C",
+        "size": "80",
+        "color": "0x92A9BA",
+        "bulletType": "Fairy Bolt"
+      }
+    },
+    {
+      "type": "0x04a4",
+      "id": "Swoll Paladin Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x04a5"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x04a6"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x04a7"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x04a8"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x745C",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Fairy Bolt"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ]
+    },
+    {
+      "type": "0x0011",
+      "id": "Flesh Collector Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0xbd8"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0xbd9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0xbda"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0xbdb"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0xbdc",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Parasitic Blast"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "100"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "7"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "6"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "7"
+        }
+      ]
+    },
+    {
+      "type": "0x4b49",
+      "id": "Acidified Assassin Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0xc008"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4b39"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4b3a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4b3b"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4b4b",
+          "size": "80",
+          "color": "0xADC718",
+          "bulletType": "Acid Bubble Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "-5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "-5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "-5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x000e",
+      "id": "Hollow King Necromancer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x9dc"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x9dd"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x9de"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x9df"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4c04",
+          "size": "80",
+          "color": "0x1a4a6b",
+          "bulletType": "SuperSpiritSpiral"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "7"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "6"
+        }
+      ]
+    },
+    {
+      "type": "0x2758",
+      "id": "Horticultural Huntress Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1844"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x1845"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x1846"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x1847"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x1849",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Laser Lotus"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "70"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        }
+      ]
+    },
+    {
+      "type": "0x0004",
+      "id": "Phylactery Mystic Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x2363"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2362"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x2360"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x2361"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x745B",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Soul Vortex"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "35"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "1"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x4b4f",
+      "id": "Magmatic Mystic Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x4b42"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4b44"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4b45"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4b46"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4b48",
+          "size": "80",
+          "color": "0xF27516",
+          "bulletType": "Eruption Staff Proj Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x0010",
+      "id": "Lost Golem Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x0258"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x0259"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x025a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x025b"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x08fd",
+          "size": "80",
+          "color": "0xb23c11",
+          "bulletType": "Golem Super Magic"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x000d",
+      "id": "Horrific Sorcerer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0xbbc"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0xbbd"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0xbbe"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0xbbf"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0xbc1",
+          "size": "80",
+          "color": "0x92A9BA",
+          "bulletType": "Horrific Proj Big"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip3": {
+        "_": "IncrementStat",
+        "stat": "20",
+        "amount": "3"
+      },
+      "ActivateOnEquip2": {
+        "_": "IncrementStat",
+        "stat": "22",
+        "amount": "6"
+      }
+    },
+    {
+      "type": "0x1e51",
+      "id": "Raijin Disciple Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1e4d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x1e58"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x1e4f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x1e50"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x1e56",
+          "size": "80",
+          "color": "0x1a4a6b",
+          "bulletType": "Ninja ST Katana Proj Full"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "75"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "7"
+        }
+      ]
+    },
+    {
+      "type": "0x4b4e",
+      "id": "Crystal Kunoichi Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x4b3c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4b3e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4b41"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4b40"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4b50",
+          "size": "80",
+          "color": "0x718EBD",
+          "bulletType": "Crystal Katana Slash Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "120"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "6"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "4"
+        }
+      ]
+    },
+    {
+      "type": "0x000f",
+      "id": "Swarming Huntress Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x08f7"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x08f8"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x08f9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x08fa"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x08fb",
+          "size": "80",
+          "color": "ffffff",
+          "bulletType": "BeeityArrow"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "8"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0xf3d",
+      "id": "Akuma Slayer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x203e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0xf3c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x2040"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x2041"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x7568",
+          "size": "80",
+          "color": "ffffff",
+          "bulletType": "Katana Akuma Slash big"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "100"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": {
+        "_": "IncrementStat",
+        "stat": "22",
+        "amount": "4"
+      }
+    },
+    {
+      "type": "0x0021",
+      "id": "Golden Archer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x578"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x579"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x57a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x57b"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x20bd",
+          "size": "100",
+          "color": "0xfff85b",
+          "bulletType": "Mike's Gilded Arrow"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "type": "0x6482",
+      "id": "Scarecrow Trickster Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6483"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x6484"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x6485"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6486"
+        }
+      ],
+      "ActivateOnEquipAll": {
+        "_": "IncrementStat",
+        "stat": "0",
+        "amount": "40"
+      },
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "15"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x6489",
+      "id": "Reanimated Archer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x648a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x648b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x648c"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x648d"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "105"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "6"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "95"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "11"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x6490",
+      "id": "Unholy Paladin Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6491"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x6492"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x6493"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6494"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "2"
+        }
+      ]
+    },
+    {
+      "type": "0x6496",
+      "id": "Totalia Mystic Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6497"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x6498"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x6499"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x649a"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "35"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "10"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "1"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x649e",
+      "id": "Paranormal Wizard Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x649f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x64a0"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x64a1"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x64a2"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ]
+    },
+    {
+      "type": "0x64c4",
+      "id": "Oryxmas Miracle Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x64bf"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x208d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2096"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2098"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2093"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x209a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2090"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x208f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2097"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x208e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2099"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2092"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2094"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2091"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x2095"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x265"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1aca"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1acb"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1acc"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1acd"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1ace"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x1acf"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x16da"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x16db"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x16dd"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        }
+      ]
+    },
+    {
+      "type": "0x25ca",
+      "id": "Valentine's Day Archer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x6406"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x6407"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x6404"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x6405"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "7"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "20"
+        }
+      ]
+    },
+    {
+      "type": "0x5b40",
+      "id": "The Mistake",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x572"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x573"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x574"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x575"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x576"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x577"
+        },
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x914"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b27"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b29"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b2b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b2d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b2f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b30"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b32"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b33"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b35"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b37"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b38"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b39"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b3a"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b3b"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x5b3d"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0xc82"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0xc83"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0xc84"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x5b3f"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "-15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "-15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "-15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "-15"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "-25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "-20"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "-500"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "-100"
+        },
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x5b40",
+          "size": "100",
+          "color": "0x000000",
+          "bulletType": "Undefined"
+        }
+      ]
+    },
+    {
+      "type": "0x156c",
+      "id": "Easter Knight Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x13aa"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x13ab"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x13ac"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x13ad"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "6"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "40"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "30"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        }
+      ]
+    },
+    {
+      "type": "0x52e9",
+      "id": "Daring Discoverer Samurai Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x52e2"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x52e5"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x52e7"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x52e8"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x52ea",
+          "size": "80",
+          "color": "0x888888",
+          "bulletType": "Iron Superslash"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "6"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "2"
+        }
+      ]
+    },
+    {
+      "type": "0x4f52",
+      "id": "Slurp Scion Wizard Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x4f4e"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4f4f"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4f50"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4f51"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4f58",
+          "size": "80",
+          "color": "0x01FFFF",
+          "bulletType": "Slurp Mega Magic"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "40"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "6"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "4"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "3"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "22",
+          "amount": "2"
+        }
+      ]
+    },
+    {
+      "type": "0x4BA0",
+      "id": "Court Magician Sorcerer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x4BA6"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x4BA3"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x4BA2"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x4BA1"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x4b9d",
+          "size": "80",
+          "color": "0x332A2B",
+          "bulletType": "Magic Wand Cards Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "60"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "-185"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "3"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "4"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "27",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "2"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "3"
+        }
+      ]
+    },
+    {
+      "type": "0x45e0",
+      "id": "Vampire Rogue Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x45cc"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x45d9"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x45dd"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x45de"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x45df",
+          "size": "80",
+          "color": "0x80D4FF",
+          "bulletType": "Scythe Dagger Large"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "21",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "15"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "30"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "type": "0x5211",
+      "id": "Treasure Hunter Archer Set",
+      "Setpiece": [
+        {
+          "_": "Equipment",
+          "slot": "0",
+          "itemtype": "0x52c6"
+        },
+        {
+          "_": "Equipment",
+          "slot": "1",
+          "itemtype": "0x52c3"
+        },
+        {
+          "_": "Equipment",
+          "slot": "2",
+          "itemtype": "0x52c7"
+        },
+        {
+          "_": "Equipment",
+          "slot": "3",
+          "itemtype": "0x527c"
+        }
+      ],
+      "ActivateOnEquipAll": [
+        {
+          "_": "ChangeSkin",
+          "skinType": "0x1b64",
+          "size": "80",
+          "color": "0xb5ffbc",
+          "bulletType": "Large Resplendent Arrow"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "50"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "20",
+          "amount": "10"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip3": [
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "30"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "26",
+          "amount": "5"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "28",
+          "amount": "5"
+        }
+      ],
+      "ActivateOnEquip2": [
+        {
+          "_": "IncrementStat",
+          "stat": "0",
+          "amount": "25"
+        },
+        {
+          "_": "IncrementStat",
+          "stat": "3",
+          "amount": "20"
+        }
+      ]
+    }
+  ]
+}

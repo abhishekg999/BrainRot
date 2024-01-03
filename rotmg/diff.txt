@@ -1,0 +1,2799 @@
+diff -r -x 'diff.*' -x client.swf -x version.txt -x '*.xml' -x _ '--unified=8' -b -B ../current/json/EquipmentSets.json ./json/EquipmentSets.json
+--- ../current/json/EquipmentSets.json	2020-07-15 13:11:20.784693797 +0000
++++ ./json/EquipmentSets.json	2020-09-02 11:41:26.914869594 +0000
+@@ -24,17 +24,17 @@
+           "slot": "3",
+           "itemtype": "0x4dfc"
+         }
+       ],
+       "ActivateOnEquipAll": [
+         {
+           "_": "ChangeSkin",
+           "skinType": "0x4e00",
+-          "size": "100",
++          "size": "80",
+           "color": "0x80D4FF",
+           "bulletType": "Harp Notes Large"
+         },
+         {
+           "_": "IncrementStat",
+           "stat": "0",
+           "amount": "40"
+         },
+@@ -1438,16 +1438,21 @@
+           "size": "80",
+           "color": "0x1a4a6b",
+           "bulletType": "Archer ST Arrow Big"
+         },
+         {
+           "_": "IncrementStat",
+           "stat": "0",
+           "amount": "105"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "20",
++          "amount": "6"
+         }
+       ],
+       "ActivateOnEquip3": [
+         {
+           "_": "IncrementStat",
+           "stat": "3",
+           "amount": "95"
+         },
+@@ -2599,21 +2604,28 @@
+           "itemtype": "0x648c"
+         },
+         {
+           "_": "Equipment",
+           "slot": "3",
+           "itemtype": "0x648d"
+         }
+       ],
+-      "ActivateOnEquipAll": {
++      "ActivateOnEquipAll": [
++        {
+         "_": "IncrementStat",
+         "stat": "0",
+         "amount": "105"
+       },
++        {
++          "_": "IncrementStat",
++          "stat": "20",
++          "amount": "6"
++        }
++      ],
+       "ActivateOnEquip3": [
+         {
+           "_": "IncrementStat",
+           "stat": "3",
+           "amount": "95"
+         },
+         {
+           "_": "IncrementStat",
+@@ -3651,11 +3663,189 @@
+           "amount": "2"
+         },
+         {
+           "_": "IncrementStat",
+           "stat": "21",
+           "amount": "3"
+         }
+       ]
++    },
++    {
++      "type": "0x45e0",
++      "id": "Vampire Rogue Set",
++      "Setpiece": [
++        {
++          "_": "Equipment",
++          "slot": "0",
++          "itemtype": "0x45cc"
++        },
++        {
++          "_": "Equipment",
++          "slot": "1",
++          "itemtype": "0x45d9"
++        },
++        {
++          "_": "Equipment",
++          "slot": "2",
++          "itemtype": "0x45dd"
++        },
++        {
++          "_": "Equipment",
++          "slot": "3",
++          "itemtype": "0x45de"
++        }
++      ],
++      "ActivateOnEquipAll": [
++        {
++          "_": "ChangeSkin",
++          "skinType": "0x45df",
++          "size": "80",
++          "color": "0x80D4FF",
++          "bulletType": "Scythe Dagger Large"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "21",
++          "amount": "5"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "28",
++          "amount": "15"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "26",
++          "amount": "20"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "3",
++          "amount": "30"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "0",
++          "amount": "30"
++        }
++      ],
++      "ActivateOnEquip3": [
++        {
++          "_": "IncrementStat",
++          "stat": "28",
++          "amount": "5"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "26",
++          "amount": "10"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "3",
++          "amount": "20"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "0",
++          "amount": "30"
++        }
++      ],
++      "ActivateOnEquip2": [
++        {
++          "_": "IncrementStat",
++          "stat": "28",
++          "amount": "5"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "26",
++          "amount": "5"
++        }
++      ]
++    },
++    {
++      "type": "0x5211",
++      "id": "Treasure Hunter Archer Set",
++      "Setpiece": [
++        {
++          "_": "Equipment",
++          "slot": "0",
++          "itemtype": "0x52c6"
++        },
++        {
++          "_": "Equipment",
++          "slot": "1",
++          "itemtype": "0x52c3"
++        },
++        {
++          "_": "Equipment",
++          "slot": "2",
++          "itemtype": "0x52c7"
++        },
++        {
++          "_": "Equipment",
++          "slot": "3",
++          "itemtype": "0x527c"
++        }
++      ],
++      "ActivateOnEquipAll": [
++        {
++          "_": "ChangeSkin",
++          "skinType": "0x1b64",
++          "size": "80",
++          "color": "0xb5ffbc",
++          "bulletType": "Large Resplendent Arrow"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "0",
++          "amount": "50"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "3",
++          "amount": "50"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "20",
++          "amount": "10"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "28",
++          "amount": "5"
++        }
++      ],
++      "ActivateOnEquip3": [
++        {
++          "_": "IncrementStat",
++          "stat": "3",
++          "amount": "30"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "26",
++          "amount": "5"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "28",
++          "amount": "5"
++        }
++      ],
++      "ActivateOnEquip2": [
++        {
++          "_": "IncrementStat",
++          "stat": "0",
++          "amount": "25"
++        },
++        {
++          "_": "IncrementStat",
++          "stat": "3",
++          "amount": "20"
++        }
++      ]
+     }
+   ]
+ }
+\ No newline at end of file
+diff -r -x 'diff.*' -x client.swf -x version.txt -x '*.xml' -x _ '--unified=8' -b -B ../current/json/Objects.json ./json/Objects.json
+--- ../current/json/Objects.json	2020-08-19 12:32:00.580211087 +0000
++++ ./json/Objects.json	2020-09-02 11:41:47.607332789 +0000
+@@ -27929,20 +27929,23 @@
+         "Index": "0xbb"
+       },
+       "SlotType": "10",
+       "Description": "An incantation that unlocks the Wine Cellar. \\n\\nKeys can only be used once you have 10 or more stars!",
+       "Sound": "use_key",
+       "Consumable": "",
+       "BagType": "4",
+       "Activate": {
+-        "_": "UnlockPortal",
++        "_": "ChangeObject",
++        "color": "-1",
++        "newId": "Wine Cellar Portal",
+         "onlyInArea": "Oryx's Chamber,Chicken Chamber",
+-        "dungeonName": "Wine Cellar",
+-        "lockedName": "Locked Wine Cellar Portal"
++        "radius": "25",
++        "targetId": "Locked Wine Cellar Portal",
++        "customString": "Wine Cellar unlocked by"
+       },
+       "feedPower": "500",
+       "Track": ""
+     },
+     {
+       "type": "0xc12",
+       "id": "Coral Juice",
+       "Class": "Equipment",
+@@ -43428,17 +43431,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Black Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32768"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7a",
+       "id": "Grey Cat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43448,17 +43451,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grey Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32769"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7b",
+       "id": "Orange Cat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43468,17 +43471,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Orange Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32770"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7c",
+       "id": "Tan Cat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43488,17 +43491,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Tan Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32771"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7d",
+       "id": "Yellow Cat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43508,17 +43511,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Yellow Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32772"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7e",
+       "id": "White Cat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43528,17 +43531,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the White Cat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32773"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe7f",
+       "id": "Brown Pup Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43548,17 +43551,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Brown Pup Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32774"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe80",
+       "id": "Grey Pup Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43568,17 +43571,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grey Pup Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32775"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe81",
+       "id": "Golden Pup Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43588,17 +43591,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Golden Pup Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32776"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe82",
+       "id": "Grey Wolf Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43608,17 +43611,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grey Wolf Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32777"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe83",
+       "id": "Brown Fox Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43628,17 +43631,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Sheepdog Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32778"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe84",
+       "id": "Sheepdog Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43648,17 +43651,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Sheepdog Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32779"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe85",
+       "id": "Grey Fox Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43668,17 +43671,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grey Fox Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32780"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe86",
+       "id": "Blue Parrot Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43688,17 +43691,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Blue Parrot Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32781"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe87",
+       "id": "Oriole Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43708,17 +43711,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Oriole Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32782"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe88",
+       "id": "Goldfinch Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43728,17 +43731,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Goldfinch Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32783"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe89",
+       "id": "Bluebird Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43748,17 +43751,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Bluebird Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32784"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8a",
+       "id": "Cardinal Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43768,17 +43771,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Cardinal Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32785"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8b",
+       "id": "Elephant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43788,17 +43791,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Elephant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32786"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8c",
+       "id": "Koala Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43808,17 +43811,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Koala Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32787"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8d",
+       "id": "Monkey Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43828,17 +43831,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Monkey Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32788"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8e",
+       "id": "Chick Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43848,17 +43851,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Chick Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32789"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe8f",
+       "id": "Pig Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43868,17 +43871,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Pig Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32790"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe90",
+       "id": "Duck Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43888,17 +43891,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Duck Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32791"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe91",
+       "id": "Squirrel Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43908,17 +43911,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Squirrel Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32792"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe92",
+       "id": "Hamster Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43928,17 +43931,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Hamster Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32793"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe93",
+       "id": "Raccoon Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43948,17 +43951,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Raccoon Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32794"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe94",
+       "id": "Dino Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43968,17 +43971,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Dino Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32795"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe95",
+       "id": "Tomb Snake Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -43988,17 +43991,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Tomb Snake Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32796"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe96",
+       "id": "Chameleon Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44008,17 +44011,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Chameleon Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32797"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe97",
+       "id": "Dragonfly Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44028,17 +44031,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Dragonfly Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32798"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe98",
+       "id": "Black Ant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44048,17 +44051,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Black Ant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32799"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe99",
+       "id": "Blue Ant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44068,17 +44071,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Blue Ant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32800"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9a",
+       "id": "Green Ant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44088,17 +44091,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Green Ant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32801"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9b",
+       "id": "Red Ant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44108,17 +44111,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Red Ant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32802"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9c",
+       "id": "Purple Ant Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44128,17 +44131,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Purple Ant Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32803"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9d",
+       "id": "Penguin Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44148,17 +44151,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Penguin Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32804"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9e",
+       "id": "Green Penguin Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44168,17 +44171,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Green Penguin Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32805"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xe9f",
+       "id": "Grape Penguin Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44188,17 +44191,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grape Penguin Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32806"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea0",
+       "id": "Grass Penguin Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44208,17 +44211,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Grass Penguin Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32807"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea1",
+       "id": "Blue Snail Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44248,17 +44251,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Green Frog Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32809"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea3",
+       "id": "Purple Snail Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44268,17 +44271,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Purple Snail Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32810"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea4",
+       "id": "Purple Frog Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44288,17 +44291,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Purple Frog Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32811"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea5",
+       "id": "Sea Slurp Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44308,17 +44311,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Sea Slurp Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32812"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea6",
+       "id": "Turtle Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44328,17 +44331,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Turtle Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32813"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea7",
+       "id": "Crab Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44348,17 +44351,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Crab Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32814"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea8",
+       "id": "Bat Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44368,17 +44371,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Bat Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32816"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xea9",
+       "id": "Lil' Ghost Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44388,17 +44391,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Lil' Ghost Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32817"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xeaa",
+       "id": "Spirit Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44408,17 +44411,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Spirit Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32818"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0xeab",
+       "id": "Baby Skin Unlocker",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+@@ -44428,17 +44431,17 @@
+       "SlotType": "10",
+       "Description": "Customize your pet with the Baby Skin.",
+       "Activate": {
+         "_": "UnlockPetSkin",
+         "skinType": "32819"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+-      "BagType": "8",
++      "BagType": "7",
+       "feedPower": "200"
+     },
+     {
+       "type": "0x20c2",
+       "id": "Orb of Aether",
+       "Class": "Equipment",
+       "Item": "",
+       "Texture": {
+@@ -47558,18 +47561,18 @@
+       },
+       "SlotType": "3",
+       "Description": "Distinguished archers are permitted to take their prized bow with them to the afterlife. It conjures ethereal arrows when drawn, penetrating the very souls of living beings.",
+       "RateOfFire": "0.95",
+       "Sound": "weapon/golden_bow",
+       "Projectile": {
+         "ObjectId": "Archer ST Arrow",
+         "Speed": "280",
+-        "MinDamage": "155",
+-        "MaxDamage": "250",
++        "MinDamage": "160",
++        "MaxDamage": "200",
+         "LifetimeMS": "200",
+         "MultiHit": ""
+       },
+       "BagType": "8",
+       "FameBonus": "4",
+       "NumProjectiles": "1",
+       "OldSound": "arrowShoot",
+       "feedPower": "900",
+@@ -50909,18 +50912,18 @@
+       },
+       "SlotType": "3",
+       "Description": "A rib strung together by a tendon, sure to send shivers down your enemy's spines.\\n\\nSprite Credits: Tero, Aurum",
+       "RateOfFire": "0.95",
+       "Sound": "weapon/golden_bow",
+       "Projectile": {
+         "ObjectId": "HArcher ST Arrow",
+         "Speed": "280",
+-        "MinDamage": "155",
+-        "MaxDamage": "250",
++        "MinDamage": "160",
++        "MaxDamage": "200",
+         "LifetimeMS": "200",
+         "MultiHit": ""
+       },
+       "BagType": "8",
+       "FameBonus": "4",
+       "NumProjectiles": "1",
+       "OldSound": "arrowShoot",
+       "feedPower": "900",
+@@ -58568,21 +58571,21 @@
+         "File": "d2LofiObjEmbed",
+         "Index": "0x261"
+       },
+       "SlotType": "28",
+       "Description": "A resplendent trumpet used to signify the coming of the end times, prophesied to sound their most glorious note at the opening of the seventh seal.",
+       "ExtraTooltipData": {
+         "EffectInfo": [
+           {
+-            "description": "Increases your attack by 12 for 4 secs",
++            "description": "Increases your attack by 8 for 4 secs",
+             "name": "Harp"
+           },
+           {
+-            "description": "Increases your defense by 8 for 4 secs",
++            "description": "Increases your defense by 12 for 4 secs",
+             "name": "Wings"
+           },
+           {
+             "description": "Within 4 sqrs Healing for 4 seconds",
+             "name": "Halo"
+           },
+           {
+             "name": "Party Effect",
+@@ -61491,16 +61494,863 @@
+       ],
+       "Consumable": "",
+       "Potion": "",
+       "BagType": "2",
+       "feedPower": "40",
+       "DropTradable": ""
+     },
+     {
++      "type": "0x3ff6",
++      "id": "Mystery Archer ST Crate",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "d2LofiObjEmbed",
++        "Index": "0x25c"
++      },
++      "SlotType": "10",
++      "Description": "A crate which contains an assortment of exotic goods for famous treasure hunters. Open it to get one of the following:\\n\\n*Resplendent Bow\\n*Embellished Quiver\\n*Ornate Armor\\n*Aquamarine Amulet\\n*Mini Treasure Hunter Archer Skin\\n*Char Slot Unlocker\\n*Vault Chest Unlocker\\n*Ambrosia\\n*Mystery ST Shard x5\\n*Golden Clover\\n\\nSprite Credits: Aurum",
++      "Activate": "MysteryDyes",
++      "Consumable": "",
++      "Soulbound": "",
++      "BagType": "8",
++      "Track": ""
++    },
++    {
++      "type": "0x3ff7",
++      "id": "Mystery Rogue ST Crate",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "d2LofiObjEmbed",
++        "Index": "0x25d"
++      },
++      "SlotType": "10",
++      "Description": "A crate which contains the wicked equipment of dark practitioners. Open it to get one of the following:\\n\\n*Soulcursed Scythe\\n*Vampiric Cape\\n*Hallowed Hide\\n*Ruthven's Rosary\\n*Mini Vampire Rogue Skin\\n*Char Slot Unlocker\\n*Vault Chest Unlocker\\n*Ambrosia\\n*Mystery ST Shard x5\\n*Golden Clover",
++      "Activate": "MysteryDyes",
++      "Consumable": "",
++      "Soulbound": "",
++      "BagType": "8",
++      "Track": ""
++    },
++    {
++      "id": "ChainScytheProcA",
++      "type": "0x45cf",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x616"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "ChainScytheChain",
++        "Speed": "25",
++        "MinDamage": "50",
++        "MaxDamage": "50",
++        "LifetimeMS": "500",
++        "Amplitude": "4",
++        "Frequency": "0.5",
++        "Size": "80",
++        "MultiHit": "",
++        "PassesCover": ""
++      }
++    },
++    {
++      "id": "ChainScytheProcB",
++      "type": "0x45d0",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x616"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "ChainScytheChain",
++        "Speed": "12.5",
++        "MinDamage": "50",
++        "MaxDamage": "50",
++        "LifetimeMS": "500",
++        "Amplitude": "2.5",
++        "Frequency": "0.5",
++        "Size": "80",
++        "MultiHit": "",
++        "PassesCover": ""
++      }
++    },
++    {
++      "id": "ChainScytheProcC",
++      "type": "0x45d1",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x616"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "ChainScytheChain",
++        "Speed": "6.25",
++        "MinDamage": "50",
++        "MaxDamage": "50",
++        "LifetimeMS": "500",
++        "Amplitude": "1",
++        "Frequency": "0.5",
++        "Size": "100",
++        "MultiHit": "",
++        "PassesCover": ""
++      }
++    },
++    {
++      "id": "ChainScytheProcD",
++      "type": "0x45d2",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x616"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "ChainScytheChain",
++        "Speed": "0",
++        "MinDamage": "0",
++        "MaxDamage": "0",
++        "LifetimeMS": "0",
++        "Amplitude": ".5",
++        "Frequency": "0.5",
++        "Size": "80"
++      }
++    },
++    {
++      "id": "ChainScytheProcE",
++      "type": "0x45d3",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x617"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "ChainScytheProj",
++        "Speed": "50",
++        "MinDamage": "100",
++        "MaxDamage": "300",
++        "LifetimeMS": "500",
++        "Amplitude": "5.5",
++        "Frequency": "0.5",
++        "Size": "90",
++        "MultiHit": "",
++        "PassesCover": "",
++        "FaceDir": ""
++      }
++    },
++    {
++      "id": "2ArcherST1A",
++      "type": "0x52c4",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fc"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "Embellished Shard",
++        "Speed": "75",
++        "MinDamage": "150",
++        "MaxDamage": "150",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ConditionEffect": {
++          "_": "Slowed",
++          "duration": "2"
++        },
++        "ArmorPiercing": ""
++      }
++    },
++    {
++      "id": "2ArcherST1B",
++      "type": "0x52c5",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fd"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "Lesser Embellished Shard",
++        "Speed": "100",
++        "MinDamage": "100",
++        "MaxDamage": "100",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ArmorPiercing": ""
++      }
++    },
++    {
++      "id": "2ArcherST1C",
++      "type": "0x4216",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fb"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "Greater Embellished Shard",
++        "Speed": "50",
++        "MinDamage": "125",
++        "MaxDamage": "125",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ConditionEffect": {
++          "_": "Paralyzed",
++          "duration": "2"
++        },
++        "ArmorPiercing": ""
++      }
++    },
++    {
++      "id": "2ArcherST1D",
++      "type": "0x4217",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fc"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "Embellished Shard",
++        "Speed": "75",
++        "MinDamage": "75",
++        "MaxDamage": "75",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ConditionEffect": {
++          "_": "Slowed",
++          "duration": "2"
++        },
++        "ArmorPiercing": ""
++      }
++    },
++    {
++      "id": "2ArcherST1E",
++      "type": "0x4218",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fd"
++      },
++      "SlotType": "15",
++      "Soulbound": "",
++      "Projectile": {
++        "ObjectId": "Lesser Embellished Shard",
++        "Speed": "100",
++        "MinDamage": "50",
++        "MaxDamage": "50",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ArmorPiercing": ""
++      }
++    },
++    {
++      "id": "2RogueST0",
++      "type": "0x45cc",
++      "setName": "Vampire Rogue Set",
++      "setType": "0x45e0",
++      "DisplayId": "Soulcursed Scythe",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x610"
++      },
++      "SlotType": "2",
++      "Description": "A two-faced blade enchanted with the wicked power of immortal beings.",
++      "ExtraTooltipData": {
++        "EffectInfo": [
++          {
++            "description": "Shoots a powerful scythe",
++            "name": "When Invisible"
++          },
++          {
++            "description": "50",
++            "name": "Chain Damage"
++          },
++          {
++            "description": "100-300",
++            "name": "Blade Damage"
++          },
++          {
++            "description": "5.5",
++            "name": "Scythe Range"
++          }
++        ]
++      },
++      "BagType": "8",
++      "FameBonus": "5",
++      "feedPower": "900",
++      "Soulbound": "",
++      "RateOfFire": "0.35",
++      "OldSound": "daggerSwing",
++      "Projectile": {
++        "ObjectId": "Scythe Dagger",
++        "Speed": "100",
++        "MinDamage": "300",
++        "MaxDamage": "400",
++        "LifetimeMS": "400",
++        "Size": "100"
++      },
++      "OnPlayerShootActivate": [
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "numShots": "1",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d3",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "numShots": "1",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d2",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "gapTiles": "0",
++          "numShots": "1",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45cf",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "numShots": "1",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d2",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "gapTiles": "0",
++          "numShots": "1",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d0",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "numShots": "1",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d2",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "gapTiles": "0",
++          "numShots": "1",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d1",
++          "requiredConditions": "Invisible"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.8",
++          "manaCost": "0",
++          "manaRequired": "0",
++          "maxDistance": "0.001",
++          "minDistance": "0.001",
++          "numShots": "1",
++          "offsetAngle": "270",
++          "proc": "1",
++          "type": "0x45d2",
++          "requiredConditions": "Invisible"
++        }
++      ]
++    },
++    {
++      "id": "2RogueST1",
++      "type": "0x45d9",
++      "setName": "Vampire Rogue Set",
++      "setType": "0x45e0",
++      "DisplayId": "Vampiric Cape",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x611"
++      },
++      "SlotType": "13",
++      "Description": "A dark and flowing cape donned by masters of the twilight hours.",
++      "BagType": "8",
++      "FameBonus": "5",
++      "MpCost": "120",
++      "Cooldown": "5.5",
++      "feedPower": "950",
++      "Soulbound": "",
++      "ExtraTooltipData": {
++        "EffectInfo": {
++          "description": "+10 DEX on ability use for 4 seconds",
++          "name": "With Soulcursed Scythe"
++        }
++      },
++      "Usable": "",
++      "ActivateOnEquip": {
++        "_": "IncrementStat",
++        "amount": "5",
++        "stat": "22"
++      },
++      "Activate": {
++        "_": "ConditionEffectSelf",
++        "duration": "4",
++        "effect": "Invisible"
++      },
++      "OnPlayerAbilityActivate": {
++        "_": "StatBoostSelf",
++        "amount": "10",
++        "mustWear": "0x45cc",
++        "color": "-1",
++        "cooldown": "0.6",
++        "duration": "4",
++        "noStack": "true",
++        "proc": "1",
++        "stat": "28"
++      }
++    },
++    {
++      "id": "2RogueST2",
++      "type": "0x45dd",
++      "setName": "Vampire Rogue Set",
++      "setType": "0x45e0",
++      "DisplayId": "Hallowed Hide",
++      "Class": "Equipment",
++      "Item": "",
++      "Description": "The hide of a false creature given sentience by profane life-twisting magic, forever cursed as an affront to the laws of mortal life.",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x612"
++      },
++      "SlotType": "6",
++      "ExtraTooltipData": {
++        "EffectInfo": {
++          "description": "Healing on self for 5 seconds when hit below 50% max HP",
++          "name": "With Ruthven's Rosary"
++        }
++      },
++      "ActivateOnEquip": [
++        {
++          "_": "IncrementStat",
++          "amount": "15",
++          "stat": "21"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "20"
++        }
++      ],
++      "BagType": "8",
++      "FameBonus": "4",
++      "feedPower": "750",
++      "Soulbound": "",
++      "OnPlayerHitActivate": {
++        "_": "ConditionEffectSelf",
++        "proc": "1",
++        "mustWear": "0x45de",
++        "effect": "Healing",
++        "cooldown": "15",
++        "duration": "5",
++        "hpMinThresholdRelative": "0.5"
++      }
++    },
++    {
++      "id": "2RogueST3",
++      "type": "0x45de",
++      "setName": "Vampire Rogue Set",
++      "setType": "0x45e0",
++      "DisplayId": "Ruthven's Rosary",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x613"
++      },
++      "SlotType": "9",
++      "Description": "A ruby-beaded necklace, carried by the cadaverous followers of Lord Ruthven.",
++      "ActivateOnEquip": [
++        {
++          "_": "IncrementStat",
++          "amount": "80",
++          "stat": "0"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "27"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "26"
++        }
++      ],
++      "BagType": "8",
++      "feedPower": "550",
++      "FameBonus": "4",
++      "Soulbound": ""
++    },
++    {
++      "id": "2ArcherST0",
++      "type": "0x52c6",
++      "setName": "Treasure Hunter Archer Set",
++      "setType": "0x5211",
++      "DisplayId": "Resplendent Bow",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5f5"
++      },
++      "SlotType": "3",
++      "Description": "I courageously descended into the ruins, only to be bombarded with cactus spines as sharp as arrows.",
++      "ExtraTooltipData": {
++        "EffectInfo": [
++          {
++            "description": "-10 DEX for 4 seconds",
++            "name": "On taking at least 20 damage"
++          },
++          {
++            "description": "2 seconds",
++            "name": "Cooldown"
++          }
++        ]
++      },
++      "RateOfFire": "0.35",
++      "OldSound": "arrowShoot",
++      "OnPlayerHitActivate": {
++        "_": "StatBoostSelf",
++        "damageThreshold": "20",
++        "amount": "-10",
++        "noStack": "true",
++        "color": "0xffd438",
++        "cooldown": "2",
++        "duration": "4",
++        "proc": "1.0",
++        "stat": "28"
++      },
++      "Projectile": {
++        "ObjectId": "Resplendent Arrow",
++        "Speed": "150",
++        "MinDamage": "200",
++        "MaxDamage": "300",
++        "LifetimeMS": "500",
++        "Amplitude": "0.25",
++        "Frequency": "0.75",
++        "Size": "100",
++        "MultiHit": "",
++        "FaceDir": ""
++      },
++      "NumProjectiles": "2",
++      "ArcGap": "0",
++      "BagType": "8",
++      "FameBonus": "5",
++      "feedPower": "800",
++      "Soulbound": ""
++    },
++    {
++      "id": "2ArcherST1",
++      "type": "0x52c3",
++      "setName": "Treasure Hunter Archer Set",
++      "setType": "0x5211",
++      "DisplayId": "Embellished Quiver",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5f6"
++      },
++      "SlotType": "15",
++      "Description": "After fending off men made of clay, I discovered a lamp that might fetch a considerable sum at the market.",
++      "ExtraTooltipData": {
++        "EffectInfo": [
++          {
++            "description": "Fire 3 projectiles in a line with the closest inflicting Paralyzed and the middle inflicting Slowed",
++            "name": "Effect"
++          },
++          {
++            "description": "Fire an additional two lines of projectiles",
++            "name": "With Aquamarine Amulet"
++          },
++          {
++            "description": "2 seconds",
++            "name": "Slow Duration"
++          }
++        ]
++      },
++      "Projectile": {
++        "ObjectId": "Greater Embellished Shard",
++        "Speed": "50",
++        "MinDamage": "250",
++        "MaxDamage": "250",
++        "LifetimeMS": "800",
++        "MultiHit": "",
++        "ConditionEffect": {
++          "_": "Paralyzed",
++          "duration": "2"
++        },
++        "ArmorPiercing": ""
++      },
++      "NumProjectiles": "0",
++      "Activate": {
++        "_": "BulletCreate",
++        "ignoreOnTooltip": "true",
++        "cooldown": "0.2",
++        "gapAngle": "0",
++        "gapTiles": "0",
++        "maxDistance": "2",
++        "minDistance": "2",
++        "numShots": "1",
++        "offsetAngle": "0"
++      },
++      "OnPlayerAbilityActivate": [
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.2",
++          "gapAngle": "0",
++          "gapTiles": "0",
++          "maxDistance": "3",
++          "minDistance": "3",
++          "numShots": "1",
++          "offsetAngle": "0",
++          "proc": "1",
++          "type": "0x52c4"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "cooldown": "0.2",
++          "gapAngle": "0",
++          "gapTiles": "0",
++          "maxDistance": "4",
++          "minDistance": "4",
++          "numShots": "1",
++          "offsetAngle": "0",
++          "proc": "1",
++          "type": "0x52c5"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "mustWear": "0x527c",
++          "arcGap": "16",
++          "cooldown": "0.2",
++          "gapAngle": "0",
++          "gapTiles": "0",
++          "maxDistance": "2",
++          "minDistance": "2",
++          "numShots": "2",
++          "offsetAngle": "0",
++          "proc": "1",
++          "type": "0x4216"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "mustWear": "0x527c",
++          "arcGap": "16",
++          "cooldown": "0.2",
++          "gapAngle": "0",
++          "gapTiles": "0",
++          "maxDistance": "3",
++          "minDistance": "3",
++          "numShots": "2",
++          "offsetAngle": "0",
++          "proc": "1",
++          "type": "0x4217"
++        },
++        {
++          "_": "BulletCreate",
++          "targetMouse": "true",
++          "mustWear": "0x527c",
++          "arcGap": "16",
++          "cooldown": "0.2",
++          "gapAngle": "0",
++          "gapTiles": "0",
++          "maxDistance": "4",
++          "minDistance": "4",
++          "numShots": "2",
++          "offsetAngle": "0",
++          "proc": "1",
++          "type": "0x4218"
++        }
++      ],
++      "Usable": "",
++      "BagType": "8",
++      "FameBonus": "5",
++      "MpCost": "100",
++      "Soulbound": "",
++      "feedPower": "850"
++    },
++    {
++      "id": "2ArcherST2",
++      "type": "0x52c7",
++      "setName": "Treasure Hunter Archer Set",
++      "setType": "0x5211",
++      "Class": "Equipment",
++      "Item": "",
++      "DisplayId": "Ornate Armor",
++      "Description": "To my shock, a spirit arose from the lamp and thanked me for freeing him. The Genie would only allow me access to the contents of the lamp if I proved myself against his vast spiritual power.",
++      "ExtraTooltipData": {
++        "EffectInfo": [
++          {
++            "description": "Healing for 5 seconds",
++            "name": "On taking at least 20 damage"
++          },
++          {
++            "description": "20 seconds",
++            "name": "Cooldown"
++          }
++        ]
++      },
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5f7"
++      },
++      "OnPlayerHitActivate": {
++        "_": "ConditionEffectSelf",
++        "cooldown": "20",
++        "damageThreshold": "20",
++        "duration": "5",
++        "effect": "Healing",
++        "proc": "1"
++      },
++      "SlotType": "6",
++      "ActivateOnEquip": [
++        {
++          "_": "IncrementStat",
++          "amount": "15",
++          "stat": "21"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "10",
++          "stat": "26"
++        }
++      ],
++      "BagType": "8",
++      "FameBonus": "4",
++      "feedPower": "700",
++      "Soulbound": ""
++    },
++    {
++      "id": "2ArcherST3",
++      "type": "0x527c",
++      "setName": "Treasure Hunter Archer Set",
++      "setType": "0x5211",
++      "Class": "Equipment",
++      "Item": "",
++      "DisplayId": "Aquamarine Amulet",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5f8"
++      },
++      "SlotType": "9",
++      "Description": "Though his magic was strong, my resolve was stronger. The spirit dissipated and all that remained was the treasure within.",
++      "ActivateOnEquip": [
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "21"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "26"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "50",
++          "stat": "0"
++        }
++      ],
++      "BagType": "8",
++      "FameBonus": "4",
++      "feedPower": "600",
++      "Soulbound": ""
++    },
++    {
+       "type": "0xc85",
+       "id": "Common Feline Egg",
+       "Class": "Equipment",
+       "Item": "",
+       "Texture": {
+         "File": "lofiObj2",
+         "Index": "0x100"
+       },
+@@ -69785,17 +70635,17 @@
+       },
+       "Consumable": "",
+       "BagType": "7",
+       "Soulbound": "",
+       "feedPower": "1000"
+     },
+     {
+       "type": "0x4bea",
+-      "id": "Bard Priestess Skin",
++      "id": "Lyrical Priestess Skin",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "183"
+       },
+       "SlotType": "10",
+       "Description": "Her tunes will ward away evil and reinvigorate your soul!\\n\\nSkin Class: Priest\\nSprite Credits: GingerAloe",
+@@ -78830,17 +79680,17 @@
+       },
+       "Consumable": "",
+       "Soulbound": "",
+       "BagType": "7",
+       "feedPower": "1000"
+     },
+     {
+       "type": "0x24d6",
+-      "id": "Wasteland Headhunter Archer Skin",
++      "id": "Wasteland Mercenary Archer Skin",
+       "Class": "Equipment",
+       "Item": "",
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "575"
+       },
+       "SlotType": "10",
+       "Description": "I can bring you in warm, or I can bring you in cold. That is the way.\\n\\nSkin Class: Archer\\nSprite Credits: Mizumi, Wilhuff",
+@@ -78889,16 +79739,116 @@
+         "skinType": "9433"
+       },
+       "Consumable": "",
+       "BagType": "7",
+       "Soulbound": "",
+       "feedPower": "1000"
+     },
+     {
++      "type": "0x24dc",
++      "id": "Mini Treasure Hunter Archer Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "578"
++      },
++      "SlotType": "10",
++      "Description": "Scavenging exceptional treasurer with exceptional flair!\\n\\nSkin Class: Archer\\nSprite Credits: Aurum",
++      "Activate": {
++        "_": "UnlockSkin",
++        "skinType": "9435"
++      },
++      "Consumable": "",
++      "BagType": "7",
++      "Soulbound": "",
++      "feedPower": "1000"
++    },
++    {
++      "type": "0x24de",
++      "id": "Mini Vampire Rogue Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "579"
++      },
++      "SlotType": "10",
++      "Description": "What is a rogue?\\n\\nSkin Class: Rogue",
++      "Activate": {
++        "_": "UnlockSkin",
++        "skinType": "9437"
++      },
++      "Consumable": "",
++      "BagType": "7",
++      "Soulbound": "",
++      "feedPower": "1000"
++    },
++    {
++      "type": "0x24e0",
++      "id": "Torched Paleolithic Wizard Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "580"
++      },
++      "SlotType": "10",
++      "Description": "Hold a torch for building a new civilization.\\n\\nSkin Class: Wizard\\nSprite Credits: Nazoado",
++      "Activate": {
++        "_": "UnlockSkin",
++        "skinType": "9439"
++      },
++      "Consumable": "",
++      "BagType": "7",
++      "Soulbound": "",
++      "feedPower": "1000"
++    },
++    {
++      "type": "0x24e2",
++      "id": "Crab Samurai Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "581"
++      },
++      "SlotType": "10",
++      "Description": "It loves boogieing to electronic dance music.\\n\\nSkin Class: Samurai\\nSprite Credits: Zquidx",
++      "Activate": {
++        "_": "UnlockSkin",
++        "skinType": "9441"
++      },
++      "Consumable": "",
++      "Soulbound": "",
++      "BagType": "7",
++      "feedPower": "1000"
++    },
++    {
++      "type": "0x24e4",
++      "id": "Sleepover Archer Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "582"
++      },
++      "SlotType": "10",
++      "Description": "The baby sitter of sleepovers.\\n\\nSkin Class: Archer\\nSprite Credits: Zquidx",
++      "Activate": {
++        "_": "UnlockSkin",
++        "skinType": "9443"
++      },
++      "Consumable": "",
++      "BagType": "7",
++      "Soulbound": "",
++      "feedPower": "1000"
++    },
++    {
+       "type": "0x190",
+       "id": "Apple",
+       "DisplayId": "Apple of Extreme Maxening",
+       "Class": "Equipment",
+       "Item": "",
+       "Texture": {
+         "File": "lofiObj",
+         "Index": "0x0f"
+@@ -100055,16 +101005,28 @@
+       "Class": "Character",
+       "AnimatedTexture": {
+         "File": "d3Chars8x8rEmbed",
+         "Index": "19"
+       },
+       "ShadowSize": "50"
+     },
+     {
++      "type": "0x52c9",
++      "id": "Craig the Builder",
++      "DisplayId": "Craig the Builder",
++      "Class": "Character",
++      "NoMiniMap": "",
++      "AnimatedTexture": {
++        "File": "d3Chars8x8rEmbed",
++        "Index": "23"
++      },
++      "ShadowSize": "0"
++    },
++    {
+       "type": "0x74a2",
+       "id": "GTest",
+       "Class": "Character",
+       "Enemy": "",
+       "Texture": {
+         "File": "invisible",
+         "Index": "0"
+       },
+@@ -129937,16 +130899,66 @@
+         "skinType": "30283"
+       },
+       "Consumable": "",
+       "Soulbound": "",
+       "BagType": "7",
+       "feedPower": "1000"
+     },
+     {
++      "id": "Giant Worm",
++      "type": "0x764d",
++      "Pet": "",
++      "Class": "Pet",
++      "Texture": {
++        "File": "lofiObj2",
++        "Index": "0x32"
++      },
++      "Family": "Insect",
++      "Rarity": "Divine",
++      "DefaultSkin": "Giant Worm Pet Skin",
++      "Size": "80",
++      "NoHatchOrFuse": ""
++    },
++    {
++      "type": "0x764e",
++      "id": "Giant Worm Pet Skin",
++      "PetSkin": "",
++      "DisplayId": "Giant Worm",
++      "Class": "PetSkin",
++      "AnimatedTexture": {
++        "File": "petsDivine",
++        "Index": "147"
++      },
++      "Family": "Insect",
++      "Rarity": "Divine"
++    },
++    {
++      "type": "0x764f",
++      "id": "Giant Worm Pet Stone",
++      "DisplayId": "Giant Worm Pet Skin",
++      "Class": "Equipment",
++      "Item": "",
++      "AnimatedTexture": {
++        "File": "petsDivine",
++        "Index": "147"
++      },
++      "ScaleValue": "10",
++      "SlotType": "10",
++      "Description": "You found ground fissures? Maybe there's a dangerous string monster in the ground.\\n\\nSprite Credits: Nazoado\\n\\nUnlocks Giant Worm Skin of the Insect family. The skin will be added to your Pet Wardrobe in the Pet Yard and can be used to change the appearance of your pet!",
++      "Activate": {
++        "_": "UnlockPetSkin",
++        "skinType": "30286"
++      },
++      "Consumable": "",
++      "Soulbound": "",
++      "BagType": "7",
++      "feedPower": "1000"
++    },
++    {
+       "type": "0x0927",
+       "id": "Dreadstump the Pirate King",
+       "Enemy": "",
+       "Class": "Character",
+       "AnimatedTexture": {
+         "File": "chars16x16dEncounters",
+         "Index": "4"
+       },
+@@ -145864,16 +146876,106 @@
+       "Class": "Projectile",
+       "Texture": {
+         "File": "d2LofiObjEmbed",
+         "Index": "0x2b8"
+       },
+       "Rotation": "100"
+     },
+     {
++      "id": "Scythe Dagger",
++      "type": "0x45d7",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x614"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "id": "Scythe Dagger Large",
++      "type": "0x45cd",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x615"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "id": "ChainScytheChain",
++      "type": "0x45ce",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x616"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "id": "ChainScytheProj",
++      "type": "0x45d4",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x617"
++      },
++      "AngleCorrection": "0.5"
++    },
++    {
++      "type": "0x527d",
++      "id": "Resplendent Arrow",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5f9"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "type": "0x528a",
++      "id": "Large Resplendent Arrow",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fa"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "type": "0x528b",
++      "id": "Greater Embellished Shard",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fb"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "type": "0x528c",
++      "id": "Embellished Shard",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fc"
++      },
++      "AngleCorrection": "1"
++    },
++    {
++      "type": "0x528d",
++      "id": "Lesser Embellished Shard",
++      "Class": "Projectile",
++      "Texture": {
++        "File": "lofiObj3",
++        "Index": "0x5fd"
++      },
++      "AngleCorrection": "1"
++    },
++    {
+       "type": "0x7443",
+       "id": "Puppet Theatre Boss Spawn",
+       "Class": "GameObject",
+       "Texture": {
+         "File": "invisible",
+         "Index": "0"
+       },
+       "Size": "0"
+@@ -147518,16 +148620,61 @@
+       "DeathSound": "monster/stone_walls_death",
+       "Static": "",
+       "FullOccupy": "",
+       "OccupySquare": "",
+       "EnemyOccupySquare": "",
+       "BlocksSight": ""
+     },
+     {
++      "type": "0x5000",
++      "id": "Test Horn",
++      "Class": "Equipment",
++      "Item": "",
++      "Texture": {
++        "File": "d2LofiObjEmbed",
++        "Index": "0x2b3"
++      },
++      "SlotType": "9",
++      "Description": "A horn claimed from Oryx's iconic helmet. To hold this in one's hand is a monumental insult to the Mad God's ego.",
++      "ExtraTooltipData": {
++        "EffectInfo": {
++          "name": "Mad God's Hubris",
++          "description": "Gain +10 dexterity while attacking if your health is BELOW 90% Max HP"
++        }
++      },
++      "ActivateOnEquip": [
++        {
++          "_": "IncrementStat",
++          "amount": "140",
++          "stat": "0"
++        },
++        {
++          "_": "IncrementStat",
++          "amount": "5",
++          "stat": "21"
++        }
++      ],
++      "OnPlayerShootActivate": {
++        "_": "StatBoostSelf",
++        "cooldown": "0.6",
++        "noStack": "true",
++        "hpMinThresholdRelative": "0.9",
++        "proc": "1",
++        "amount": "10",
++        "duration": "1.4",
++        "stat": "28",
++        "color": "-1"
++      },
++      "BagType": "6",
++      "FameBonus": "8",
++      "feedPower": "1000",
++      "Soulbound": ""
++    },
++    {
+       "type": "0x741a",
+       "id": "atst Low Range Obj",
+       "Enemy": "",
+       "Class": "Character",
+       "AnimatedTexture": {
+         "File": "chars8x8rHero1",
+         "Index": "0x01"
+       },
+@@ -152265,16 +153412,42 @@
+         "File": "playerskins16",
+         "Index": "32"
+       },
+       "PlayerClassType": "0x0325",
+       "UnlockSpecial": "Set Skin",
+       "NoSkinSelect": ""
+     },
+     {
++      "type": "0x1b64",
++      "id": "Treasure Hunter Archer Set Skin",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins16",
++        "Index": "36"
++      },
++      "PlayerClassType": "0x307",
++      "UnlockSpecial": "Set Skin",
++      "NoSkinSelect": ""
++    },
++    {
++      "type": "0x45df",
++      "id": "Vampire Rogue Set Skin",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins16",
++        "Index": "37"
++      },
++      "PlayerClassType": "0x0300",
++      "UnlockSpecial": "Set Skin",
++      "NoSkinSelect": ""
++    },
++    {
+       "type": "0x7492",
+       "id": "Mini Geb",
+       "Skin": "",
+       "Class": "Skin",
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "98"
+       },
+@@ -153694,17 +154867,17 @@
+         "File": "playerskins",
+         "Index": "181"
+       },
+       "PlayerClassType": "0x0300",
+       "NoSkinSelect": ""
+     },
+     {
+       "type": "0x4bd1",
+-      "id": "Bard Priestess",
++      "id": "Lyrical Priestess",
+       "Skin": "",
+       "Class": "Skin",
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "183"
+       },
+       "PlayerClassType": "0x0310",
+       "NoSkinSelect": ""
+@@ -158937,17 +160110,17 @@
+         "File": "playerskins",
+         "Index": "574"
+       },
+       "PlayerClassType": "0x0300",
+       "NoSkinSelect": ""
+     },
+     {
+       "type": "0x24d5",
+-      "id": "Wasteland Headhunter Archer",
++      "id": "Wasteland Mercenary Archer",
+       "Skin": "",
+       "Class": "Skin",
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "575"
+       },
+       "PlayerClassType": "0x307",
+       "NoSkinSelect": ""
+@@ -158972,16 +160145,76 @@
+       "AnimatedTexture": {
+         "File": "playerskins",
+         "Index": "577"
+       },
+       "PlayerClassType": "0x307",
+       "NoSkinSelect": ""
+     },
+     {
++      "type": "0x24db",
++      "id": "Mini Treasure Hunter Archer",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "578"
++      },
++      "PlayerClassType": "0x307",
++      "NoSkinSelect": ""
++    },
++    {
++      "type": "0x24dd",
++      "id": "Mini Vampire Rogue",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "579"
++      },
++      "PlayerClassType": "0x0300",
++      "NoSkinSelect": ""
++    },
++    {
++      "type": "0x24df",
++      "id": "Torched Paleolithic Wizard",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "580"
++      },
++      "PlayerClassType": "0x30e",
++      "NoSkinSelect": ""
++    },
++    {
++      "type": "0x24e1",
++      "id": "Crab Samurai",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "581"
++      },
++      "PlayerClassType": "0x0311",
++      "NoSkinSelect": ""
++    },
++    {
++      "type": "0x24e3",
++      "id": "Sleepover Archer",
++      "Skin": "",
++      "Class": "Skin",
++      "AnimatedTexture": {
++        "File": "playerskins",
++        "Index": "582"
++      },
++      "PlayerClassType": "0x307",
++      "NoSkinSelect": ""
++    },
++    {
+       "type": "0x1731",
+       "id": "Stheno Summoner",
+       "Class": "GameObject",
+       "Texture": {
+         "File": "invisible",
+         "Index": "0"
+       },
+       "Size": "0"
+@@ -204519,17 +205752,18 @@
+       },
+       "HitSound": "monster/golems_hit",
+       "DeathSound": "monster/traps_death",
+       "Size": "110",
+       "ShadowSize": "110",
+       "MaxHitPoints": "5000",
+       "Defense": "25",
+       "Exp": "1000",
+-      "StasisImmune": ""
++      "StasisImmune": "",
++      "TrackLoot": ""
+     },
+     {
+       "type": "0x70f3",
+       "id": "Ruins Cluster Bomb",
+       "DisplayId": "Magic Lamp",
+       "Class": "Character",
+       "Group": "Desert Ruins",
+       "Enemy": "",
+@@ -204631,16 +205865,17 @@
+       "ShadowSize": "140",
+       "MaxHitPoints": "14000",
+       "Defense": "34",
+       "Exp": "2100",
+       "God": "",
+       "Quest": "",
+       "HealthBarBoss": "",
+       "StasisImmune": "",
++      "TrackLoot": "",
+       "Projectile": [
+         {
+           "id": "0",
+           "ObjectId": "Golem Arrow",
+           "Damage": "70",
+           "Speed": "70",
+           "LifetimeMS": "1000",
+           "Size": "100",
+Binary files ../current/sheets/d2LofiObj.png and ./sheets/d2LofiObj.png differ
+Binary files ../current/sheets/d3Chars8x8r.png and ./sheets/d3Chars8x8r.png differ
+Binary files ../current/sheets/lofiObj3.png and ./sheets/lofiObj3.png differ
+Binary files ../current/sheets/petsDivine.png and ./sheets/petsDivine.png differ
+Binary files ../current/sheets/playersSkins16Mask.png and ./sheets/playersSkins16Mask.png differ
+Binary files ../current/sheets/playersSkins16.png and ./sheets/playersSkins16.png differ
+Binary files ../current/sheets/playersSkinsMask.png and ./sheets/playersSkinsMask.png differ
+Binary files ../current/sheets/playersSkins.png and ./sheets/playersSkins.png differ

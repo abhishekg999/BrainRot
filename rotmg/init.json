@@ -1,0 +1,27 @@
+{
+  "AppSettings": {
+    "UseExternalPayments": "1",
+    "MaxStackablePotions": "6",
+    "PotionPurchaseCooldown": "400",
+    "PotionPurchaseCostCooldown": "8000",
+    "PotionPurchaseCosts": {
+      "cost": [
+        "5",
+        "10",
+        "20",
+        "40",
+        "80",
+        "120",
+        "200",
+        "300",
+        "450",
+        "600"
+      ]
+    },
+    "FilterList": "[a4]mmysh[o0]p\r\n\"[i1|l].{0,15}p[o0]?ts.{0,15}c[o0]?\"\r\n[i1|l]nst[a4]ntd[e3][il1|][i1|l]v[e3]ry\r\n[i1|l]nst[a4]p[o0]ts\r\n[i1|l]p[o0]?tsc?[o0]?\r\n\"[il1|]nst[a4].{0,15}p[0o]ts\"\r\n\"[o0]ryx.{0,5}in\"\r\n\"[o0]ryx{0,10}?pr[0o]\"\r\n[o0]ryxs[e3]t[o0][e3]u\r\n[o0]ryxsh[o0]pru\r\n[o0]w[il1|]y\r\nb[il1|]tly\r\nbuyfr[o0]mus\r\nch[e3][a4]p[o0]ryx\r\nch[e3][a4]pestp[o0]t[i1|l][0o]ns\r\nch[e3][a4]pst[a4]tp[o0]ts\r\nd[o0]tc[o0]\r\nd[o0]tn[e3]t\r\nfr[e3][e3]mu[il1|][e3]\r\nfr[e3][e3]r[o0]tmg\r\ng[0o][0o]gl\r\n\"nst[a4].{0,15}p[0o]t[s5]\"\r\n\"p[o0]t[i1|l][o0]ns.{0,15}?r[e3][a4][il1|]?m?(net)?\"\r\n\"p[o0]t[i1|l][o0]ns.{0,15}?r[o0]tmg\"\r\n\"r[0o]?tmg.{0,15}[0o]ut\"\r\n\"r[0o]?tmg.{0,15}c[a40o]\"\r\n\"r[0o]?tmg.{0,15}gu[i1|l][i1|l]ds\"\r\n\"r[0o]?tmg.{0,15}p[0o]t[s5]\"\r\n\"r[0o]?tmg.{0,15}pr[0o]sh[0o]p\"\r\n\"r[0o]?tmg.{0,15}s[a4][i1|l][e3]\"\r\n\"r[0o]?tmg.{0,15}sh[0o]pn[i1|l]\"\r\n\"r[0o]?tmg.{0,15}v[a4]u[i1|l]tc[0o]m\"\r\n\"r[e3][a4][i1|l]m.{0,15}g[o0][o0]ds\"\r\n\"r[e3][a4][i1|l]m.{0,15}g[o0]d\"\r\n\"r[e3][a4][i1|l]m.{0,15}k[i1|l]ng\"\r\n\"r[e3][a4][i1|l]m.{0,15}p[0o]ts\"\r\n\"r[e3][a4][i1|l]m.{0,15}w[i1|l]nn[e3]r\"\r\n\"r[o0]?tmg.{0,15}[o0]ut[l1i]et.{0,15}c[0o]m\"\r\n\"r[o0]?tmg.{0,15}[s5][a4][l1i|][e3]\"\r\n\"r[o0]?tmg.{0,15}m[0o]dz\"\r\n\"r[o0]?tmg.{0,15}p[0o].{0,15}c[0o]m\"\r\n\"r[o0]?tmg.{0,15}w[s5]\"\r\nt[il1|]nyur[il1|]\r\n\"wh[i1|l]t[e3].{0,15}b[a4]g.{0,15}d[0o]t\"\r\n\"wh[i1|l]t[e3].{0,15}b[a4]g.{0,15}n[e3]t\"\r\n\"wh[il1|]t[e3].{0,15}b[a4]g.{0,15}c[0o]m\"\r\nMMMMM\r\nb[e3]rt\r\nhttp://\r\n",
+    "DisableRegist": "0",
+    "MysteryBoxRefresh": "180",
+    "SalesforceMobile": "0",
+    "UGDOpenSubmission": "1"
+  }
+}
