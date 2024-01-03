@@ -51,7 +51,7 @@ export default class WorldScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, this.worldData.width*this.TILE_SIZE, this.worldData.height*this.TILE_SIZE)
     this.physics.world.setBoundsCollision(true, true, true, true);
   
-    this.cameras.main.zoom = 1;
+    this.cameras.main.zoom = 4;
 	}
 
 	private _load_player_tile(pos: [number, number], index: number) : void {
@@ -102,7 +102,6 @@ export default class WorldScene extends Phaser.Scene {
 		// }
 
     this.update_map(this.worldData.map);  
-
     this.player.update();
   }
 }

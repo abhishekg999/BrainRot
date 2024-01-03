@@ -20,15 +20,20 @@ export default class ActiveWeapon {
 		this.fireInterval = fireInterval;
 
 		this.projectiles = [];
-		
-		const shoot_key = this.player.scene.input.keyboard.addKey("SPACE");
-		shoot_key.addListener('down', () => {
-			this.startShooting();
-		});
+        
+        // @ts-ignore
+        this.player.scene.input.on('pointerdown', (e) => {
+            if (e.button == 0) {
+                this.startShooting();
+            }
+        });
 
-		shoot_key.addListener('up', () => {
-			this.stopShooting();
-		});
+        // @ts-ignore
+        this.player.scene.input.on('pointerup', (e) => {
+            if (e.button == 0) {
+                this.stopShooting();
+            }
+        });
 	}
 
 	public startShooting() {

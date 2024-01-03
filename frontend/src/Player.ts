@@ -58,15 +58,26 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
           max_duration: 2000,
           damage: 100,
           speed: 50,
-          shot_angle: Math.PI/16
+          shot_angle: Math.PI
         },
         {
           max_duration: 2000,
           damage: 100,
           speed: 50,
-          shot_angle: -Math.PI/16
-
-        }
+          shot_angle: 0
+        },
+        {
+        max_duration: 2000,
+        damage: 100,
+        speed: 50,
+        shot_angle: Math.PI/2
+        },
+        {
+        max_duration: 2000,
+        damage: 100,
+        speed: 50,
+        shot_angle: -Math.PI/2
+        },
       ]
     });
   }

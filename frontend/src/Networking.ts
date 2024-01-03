@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 export const socket = io();
 
 socket.emit("HELLO_SERVER", {
-    identity: socket.id,
+    identity: true
 });
 
 socket.on('HELLO_CLIENT', (d) => {

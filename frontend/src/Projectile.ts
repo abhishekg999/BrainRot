@@ -19,9 +19,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setCollisionCategory(CollisionCategory.PLAYER_PROJECTILE)
-        
-        this.setDebug(false, false, 1);
-
         const { max_duration, damage, speed, shot_angle } = projectileConfig;
         
         this.speed = speed;

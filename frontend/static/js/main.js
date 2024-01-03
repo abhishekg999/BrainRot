@@ -78962,7 +78962,6 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     scene.add.existing(this);
     scene.physics.add.existing(this);
     this.setCollisionCategory(CollisionCategory.PLAYER_PROJECTILE);
-    this.setDebug(false, false, 1);
     const { max_duration, damage, speed, shot_angle } = projectileConfig;
     this.speed = speed;
     this.shot_angle = shot_angle;
@@ -78993,12 +78992,15 @@ class ActiveWeapon {
     this.projectilesDefinitions = projectiles;
     this.fireInterval = fireInterval;
     this.projectiles = [];
-    const shoot_key = this.player.scene.input.keyboard.addKey("SPACE");
-    shoot_key.addListener("down", () => {
-      this.startShooting();
+    this.player.scene.input.on("pointerdown", (e) => {
+      if (e.button == 0) {
+        this.startShooting();
+      }
     });
-    shoot_key.addListener("up", () => {
-      this.stopShooting();
+    this.player.scene.input.on("pointerup", (e) => {
+      if (e.button == 0) {
+        this.stopShooting();
+      }
     });
   }
   startShooting() {
@@ -79052,13 +79054,25 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
           max_duration: 2000,
           damage: 100,
           speed: 50,
-          shot_angle: Math.PI / 16
+          shot_angle: Math.PI
         },
         {
           max_duration: 2000,
           damage: 100,
           speed: 50,
-          shot_angle: -Math.PI / 16
+          shot_angle: 0
+        },
+        {
+          max_duration: 2000,
+          damage: 100,
+          speed: 50,
+          shot_angle: Math.PI / 2
+        },
+        {
+          max_duration: 2000,
+          damage: 100,
+          speed: 50,
+          shot_angle: -Math.PI / 2
         }
       ]
     });
@@ -79131,7 +79145,7 @@ class WorldScene extends import_phaser3.default.Scene {
     this.cameras.main.roundPixels = true;
     this.physics.world.setBounds(0, 0, this.worldData.width * this.TILE_SIZE, this.worldData.height * this.TILE_SIZE);
     this.physics.world.setBoundsCollision(true, true, true, true);
-    this.cameras.main.zoom = 1;
+    this.cameras.main.zoom = 4;
   }
   _load_player_tile(pos, index) {
     const [y, x] = pos;
@@ -81751,7 +81765,7 @@ Object.assign(lookup2, {
 // src/Networking.ts
 var socket4 = lookup2();
 socket4.emit("HELLO_SERVER", {
-  identity: socket4.id
+  identity: true
 });
 socket4.on("HELLO_CLIENT", (d) => {
   console.log(`SERVER SAYS: ${JSON.stringify(d)}`);
@@ -81765,7 +81779,7 @@ var config = {
   physics: {
     default: "arcade",
     arcade: {
-      debug: true
+      debug: false
     }
   },
   scale: {
