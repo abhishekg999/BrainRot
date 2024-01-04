@@ -1,6 +1,7 @@
 import json
 from random import choice
 from auth import Auth
+from worlds import World
 
 def R_HELLO_CLIENT(
         success: bool, 
@@ -19,18 +20,5 @@ def R_HELLO_CLIENT(
 
     return resp
 
-def M_HELLO_SERVER(data: dict):
-    identifier = data.get('identity')
-    session_token = Auth.verify(identifier)
-
-    success = session_token is not None
-    error = None if success else "Unable to identify user with provided credentials."
-    
-    response = R_HELLO_CLIENT(
-        success,
-        error,
-        session_token,
-        ['nexus']
-    )
-    return response
-
+def R_WORLD_STATE():
+    pass

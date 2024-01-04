@@ -1,15 +1,21 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import TypeAlias
 from player import Player
+from pprint import pprint
+import json
 
 import random
 
-from tiles import TILE_SIZE, ALL_TILES
+from tiles import TILE_SIZE, SimpleTiles
 
 WORLD_WIDTH = 128
 WORLD_HEIGHT = 128
 
-class World:
+class ABCWorld(ABC):
+    @abstractmethod
+    def add_player(self, player: Player): ...
+
+class World(ABCWorld):
     tile_width: int
     tile_height: int
     width: int
@@ -24,13 +30,28 @@ class World:
         self.width = TILE_SIZE * WORLD_WIDTH
         self.height = TILE_SIZE * WORLD_HEIGHT
 
-        self.world = [[random.choice(list(ALL_TILES.keys())) for _ in range(WORLD_WIDTH)] for _ in range(WORLD_HEIGHT)]
+        self.world = [[random.choice(SimpleTiles)['type'] for _ in range(WORLD_WIDTH)] for _ in range(WORLD_HEIGHT)]
         self.players = []
         self.objects = []
+
     
+    def _get_tiles_in_radius_around_position(self, _x, _y, radius):
+        tile_x = _x // TILE_SIZE
+        tile_y = _y // TILE_SIZE
+
+        tiles = {}
+        for y in range(max(0, tile_y - radius), min(self.height, tile_y + radius)):
+            for x in range(max(0, tile_x - radius), min(self.width, tile_x + radius)):
+                # serialized in same format as js object
+                tiles[f"{y},{x}"] = self.world[y][x]
+
+        return tiles            
+
     def add_player(self, player: Player):
         self.players.append(player)
         # then maybe configure some observers idk yet
 
 world = World()
+print(world._get_tiles_in_radius_around_position(100, 100, 5))
+
 

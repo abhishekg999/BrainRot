@@ -78942,7 +78942,7 @@ var import_phaser2 = __toESM(require_phaser(), 1);
 // src/Projectile.ts
 var import_phaser = __toESM(require_phaser(), 1);
 
-// CollisionCategories.ts
+// src/CollisionCategories.ts
 var CollisionCategory;
 (function(CollisionCategory2) {
   CollisionCategory2[CollisionCategory2["PLAYER_PROJECTILE"] = 0] = "PLAYER_PROJECTILE";
@@ -78967,7 +78967,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     this.shot_angle = shot_angle;
     this.max_duration = max_duration;
     this.damage = damage;
-    this.setDepth(100);
+    this.setDepth(101);
     this.setAngle(this.shot_angle);
     setTimeout(() => this.destroy(), this.max_duration);
     const vector = import_phaser.default.Math.Vector2.ONE.clone();
@@ -79046,33 +79046,15 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
       repeat: -1
     });
     this.play("player_idle");
-    this.setDepth(101);
+    this.setDepth(100);
     this.weapon = new ActiveWeapon(this, {
-      fireInterval: 100,
+      fireInterval: 666,
       projectiles: [
         {
           max_duration: 2000,
           damage: 100,
-          speed: 50,
-          shot_angle: Math.PI
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 50,
+          speed: 60,
           shot_angle: 0
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 50,
-          shot_angle: Math.PI / 2
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 50,
-          shot_angle: -Math.PI / 2
         }
       ]
     });
@@ -79103,6 +79085,9 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
   }
 }
 
+// src/GroundTypes.ts
+var getGroundTypes = fetch("/rotmg/json/GroundTypes.json").then((r) => r.text()).then((r) => JSON.parse(r)["Ground"]);
+
 // src/WorldScene.ts
 var random_choice = (l) => {
   return l[Math.floor(Math.random() * l.length)];
@@ -79113,26 +79098,65 @@ class WorldScene extends import_phaser3.default.Scene {
   TILE_SIZE = 8;
   visibleTiles = {};
   player;
+  groundTypes = {};
+  offsetted;
   constructor() {
     super({ key: "WorldScene" });
     this.worldData = {
-      width: 100,
-      height: 100,
+      width: 1000,
+      height: 1000,
       map: [],
       loadVisibility: 20
     };
     for (let y = 0;y < this.worldData.height; y++) {
       let row = [];
       for (let x = 0;x < this.worldData.width; x++) {
-        row.push(random_choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+        row.push(random_choice([129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 154, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 186, 187, 188, 189, 190, 191]));
       }
       this.worldData.map.push(row);
     }
   }
   preload() {
-    this.load.spritesheet("lostHallsObjects8x8", "rotmg/sheets/lostHallsObjects8x8.png", {
-      frameWidth: 8,
-      frameHeight: 8
+    const groundTileSets = [
+      "SakuraEnvironment8x8",
+      "alienInvasionObjects8x8",
+      "ancientRuinsObjects8x8",
+      "archbishopObjects8x8",
+      "autumnNexusObjects8x8",
+      "crystalCaveObjects8x8",
+      "cursedLibraryObjects8x8",
+      "d3LofiObjEmbed",
+      "epicHiveObjects8x8",
+      "fungalCavernObjects8x8",
+      "innerWorkingsObjects8x8",
+      "lairOfDraconisObjects8x8",
+      "lofiEnvironment",
+      "lofiEnvironment2",
+      "lofiEnvironment3",
+      "lofiObj3",
+      "lostHallsObjects8x8",
+      "magicWoodsObjects8x8",
+      "mountainTempleObjects8x8",
+      "oryxHordeObjects8x8",
+      "oryxSanctuaryObjects8x8",
+      "parasiteDenObjects8x8",
+      "santaWorkshopObjects8x8",
+      "secludedThicketObjects8x8",
+      "stPatricksObjects8x8",
+      "summerNexusObjects8x8",
+      "theMachineObjects8x8",
+      "xmasNexusObjects8x8"
+    ];
+    for (let tileset of groundTileSets) {
+      this.load.spritesheet(tileset, `rotmg/sheets/${tileset}.png`, {
+        frameWidth: 8,
+        frameHeight: 8
+      });
+    }
+    getGroundTypes.then((data) => {
+      for (let tile of data) {
+        this.groundTypes[parseInt(tile.type)] = tile;
+      }
     });
     this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
       frameWidth: 8,
@@ -79146,18 +79170,46 @@ class WorldScene extends import_phaser3.default.Scene {
     this.physics.world.setBounds(0, 0, this.worldData.width * this.TILE_SIZE, this.worldData.height * this.TILE_SIZE);
     this.physics.world.setBoundsCollision(true, true, true, true);
     this.cameras.main.zoom = 4;
+    const minus_key = this.input.keyboard.addKey("O");
+    const plus_key = this.input.keyboard.addKey("P");
+    minus_key.addListener("up", () => {
+      this.cameras.main.zoom = Math.max(this.cameras.main.zoom - 1, 1);
+    });
+    plus_key.addListener("up", () => {
+      this.cameras.main.zoom = Math.min(this.cameras.main.zoom + 1, 10);
+    });
+    this.offsetted = false;
+    const offset_key = this.input.keyboard.addKey("X");
+    offset_key.addListener("up", () => {
+      if (this.offsetted) {
+        this.cameras.main.setFollowOffset(0, 0);
+        this.offsetted = false;
+      } else {
+        this.cameras.main.setFollowOffset(0, 25);
+        this.offsetted = true;
+      }
+    });
   }
-  _load_player_tile(pos, index) {
+  _get_texture_from_tile(tile) {
+    return tile["Texture"]["File"];
+  }
+  _get_texture_index_from_tile(tile) {
+    return parseInt(tile["Texture"]["Index"]);
+  }
+  _load_player_tile(pos, tileType) {
     const [y, x] = pos;
+    const tile = this.groundTypes[tileType];
+    const tileTexture = this._get_texture_from_tile(tile);
+    const tileIndex = this._get_texture_index_from_tile(tile);
     if ([y, x] in this.visibleTiles) {
-      this.visibleTiles[[y, x]].setTexture("lostHallsObjects8x8", index);
+      this.visibleTiles[[y, x]].setTexture(tileTexture, tileIndex);
     } else {
-      this.visibleTiles[[y, x]] = this.add.sprite(x * this.TILE_SIZE, y * this.TILE_SIZE, "lostHallsObjects8x8", 3);
+      this.visibleTiles[[y, x]] = this.add.sprite(x * this.TILE_SIZE, y * this.TILE_SIZE, "alienInvasionObjects8x8", 0);
     }
   }
   _unload_player_tile(pos) {
     if (pos in this.visibleTiles) {
-      this.visibleTiles[pos].setTexture("lostHallsObjects8x8", 20);
+      this.visibleTiles[pos].setTexture("alienInvasionObjects8x8", 0);
     } else {
     }
   }
@@ -79168,8 +79220,8 @@ class WorldScene extends import_phaser3.default.Scene {
     for (let y = playerTileY - radius;y <= playerTileY + radius; y++) {
       for (let x = playerTileX - radius;x <= playerTileX + radius; x++) {
         if (y >= 0 && y < this.worldData.height && x >= 0 && x < this.worldData.width) {
-          const tileIndex = map[y][x];
-          this._load_player_tile([y, x], tileIndex);
+          const tileType = map[y][x];
+          this._load_player_tile([y, x], tileType);
         }
       }
     }
@@ -81779,7 +81831,7 @@ var config = {
   physics: {
     default: "arcade",
     arcade: {
-      debug: false
+      debug: true
     }
   },
   scale: {

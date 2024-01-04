@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import ActiveWeapon from './Weapon';
-import { CollisionCategory } from '../CollisionCategories';
+import { CollisionCategory } from './CollisionCategories';
 
 type WASDControls = {
   W: Phaser.Input.Keyboard.Key;
@@ -46,37 +46,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.play('player_idle');
 
-    this.setDepth(101);
+    this.setDepth(100);
 
 
     // For now setting like this. This will be loaded from the server initially,
     // and can be later changed if the server decides to.
     this.weapon = new ActiveWeapon(this, {
-      fireInterval: 100,
+      fireInterval: 666,
       projectiles: [
         {
           max_duration: 2000,
           damage: 100,
-          speed: 50,
-          shot_angle: Math.PI
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 50,
+          speed: 60,
           shot_angle: 0
-        },
-        {
-        max_duration: 2000,
-        damage: 100,
-        speed: 50,
-        shot_angle: Math.PI/2
-        },
-        {
-        max_duration: 2000,
-        damage: 100,
-        speed: 50,
-        shot_angle: -Math.PI/2
         },
       ]
     });

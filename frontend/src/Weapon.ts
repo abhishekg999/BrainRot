@@ -2,7 +2,7 @@ import type Player from "./Player";
 import Projectile from "./Projectile";
 import type WorldScene from "./WorldScene";
 
-
+// TODO: https://steamcommunity.com/app/200210/discussions/0/613937306597197136?l=turkish
 export default class ActiveWeapon {
 	isShooting: boolean = false;
 	fireInterval: number;
@@ -21,6 +21,7 @@ export default class ActiveWeapon {
 
 		this.projectiles = [];
         
+
         // @ts-ignore
         this.player.scene.input.on('pointerdown', (e) => {
             if (e.button == 0) {
@@ -57,7 +58,5 @@ export default class ActiveWeapon {
 	}
 	
 	update() {
-
-
 	}
 }

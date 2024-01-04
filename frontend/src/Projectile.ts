@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import type WorldScene from './WorldScene';
-import { CollisionCategory } from '../CollisionCategories';
+import { CollisionCategory } from './CollisionCategories';
 
 /**
  * Represents a projectile that has been fired by a weapon. The projectile will behave as
@@ -26,7 +26,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.max_duration = max_duration;
         this.damage = damage;
      
-        this.setDepth(100);
+        this.setDepth(101);
 
         // change the sprite angle, this is currently wrong tho
         this.setAngle(this.shot_angle)
