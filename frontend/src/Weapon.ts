@@ -1,10 +1,12 @@
-import type Player from "./Player";
+import { Scene } from "phaser";
+import Player from "./Player";
 import Projectile from "./Projectile";
 import type WorldScene from "./WorldScene";
 
 // TODO: https://steamcommunity.com/app/200210/discussions/0/613937306597197136?l=turkish
 export default class ActiveWeapon {
 	isShooting: boolean = false;
+	autoShootOn: boolean = false;
 	fireInterval: number;
 	projectilesDefinitions: any[];
 	projectiles: any[];
@@ -24,17 +26,29 @@ export default class ActiveWeapon {
 
         // @ts-ignore
         this.player.scene.input.on('pointerdown', (e) => {
-            if (e.button == 0) {
+            if (e.button == 0 && !this.autoShootOn) {
                 this.startShooting();
             }
         });
 
         // @ts-ignore
         this.player.scene.input.on('pointerup', (e) => {
-            if (e.button == 0) {
+            if (e.button == 0 && !this.autoShootOn) {
                 this.stopShooting();
             }
         });
+
+		const autoshoot_key = player.scene.input.keyboard.addKey('I');
+		autoshoot_key.on('up', () => {
+			this.autoShootOn = !this.autoShootOn;
+
+			if (this.autoShootOn) {
+				this.startShooting();
+			} else {
+				this.stopShooting();
+			}
+			
+		})
 	}
 
 	public startShooting() {

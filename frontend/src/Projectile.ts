@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import type WorldScene from './WorldScene';
 import { CollisionCategory } from './CollisionCategories';
+import type Enemy from './Enemy';
 
 /**
  * Represents a projectile that has been fired by a weapon. The projectile will behave as
@@ -8,17 +9,20 @@ import { CollisionCategory } from './CollisionCategories';
  */
 export default class Projectile extends Phaser.Physics.Arcade.Sprite {
     private speed: number;
-    private shot_angle: number;
+    private shot_angle: number; // radians
     private max_duration: number;
-    private damage: number;
+    damage: number;
 
     constructor(scene: Phaser.Scene, x: number, y: number, sprite_key: string, projectileConfig: any) {
-        super(scene, x, y, 'lostHallsObjects8x8', 16 * 7 + 11);
+        super(scene, x, y, 'lostHallsObjects8x8', 16 * 10 + 3);
         
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
-        this.setCollisionCategory(CollisionCategory.PLAYER_PROJECTILE)
+        (scene as WorldScene).PlayerProjectileGroup.add(this);
+        // this.setCollisionCategory(CollisionCategory.PLAYER_PROJECTILE)
+        // this.setCollidesWith(CollisionCategory.ENEMY);
+
         const { max_duration, damage, speed, shot_angle } = projectileConfig;
         
         this.speed = speed;
@@ -27,9 +31,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.damage = damage;
      
         this.setDepth(101);
-
-        // change the sprite angle, this is currently wrong tho
-        this.setAngle(this.shot_angle)
 
         // destroy the object no matter what after it expires?
         setTimeout(() => this.destroy(), this.max_duration);
@@ -44,9 +45,14 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         vector.setAngle(actual_angle);
         vector.scale(this.speed);
 
-        this.setVelocity(vector.x, vector.y);
+        // change the sprite angle, this is currently wrong tho
+        this.setAngle(Phaser.Math.RadToDeg(actual_angle) + 45);
 
+
+        this.setVelocity(vector.x, vector.y);
     }
 
-
-}
+    public handle_hit(enemy: Enemy) {
+        this.destroy();
+    }
+} 

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import ActiveWeapon from './Weapon';
 import { CollisionCategory } from './CollisionCategories';
+import type WorldScene from './WorldScene';
 
 type WASDControls = {
   W: Phaser.Input.Keyboard.Key;
@@ -21,7 +22,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.add.existing(this);
     scene.physics.add.existing(this);
 
-    this.setCollisionCategory(CollisionCategory.PLAYER);
+    (scene as WorldScene).PlayerGroup.add(this);
+
+    this.setSize(this.width * 0.7, this.height * 0.7);
 
     this.cursors = this._createControls();
     this.mouse = scene.input.mousePointer;
@@ -34,31 +37,31 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // }, 500);
 
-    this.setCollideWorldBounds(true);
     this.speed = 100;
-
-    this.anims.create({
-      key: 'player_idle',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 0 }), // for now keep nothing
-      frameRate: 4,
-      repeat: -1
-    });
-
-    this.play('player_idle');
-
     this.setDepth(100);
-
 
     // For now setting like this. This will be loaded from the server initially,
     // and can be later changed if the server decides to.
     this.weapon = new ActiveWeapon(this, {
-      fireInterval: 666,
+      fireInterval: 100,
       projectiles: [
+        {
+          max_duration: 2000,
+          damage: 200,
+          speed: 60,
+          shot_angle: 0
+        },
         {
           max_duration: 2000,
           damage: 100,
           speed: 60,
-          shot_angle: 0
+          shot_angle: -0.4
+        },
+        {
+          max_duration: 2000,
+          damage: 100,
+          speed: 60,
+          shot_angle: 0.4
         },
       ]
     });

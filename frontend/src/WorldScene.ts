@@ -2,6 +2,9 @@ import Phaser from "phaser";
 import Player from "./Player";
 import { getObjects } from "./Objects";
 import { getGroundTypes } from "./GroundTypes";
+import Enemy from "./Enemy";
+import { CollisionCategory } from "./CollisionCategories";
+import type Projectile from "./Projectile";
 
 const random_choice = (l: any[]) => {
     return l[Math.floor(Math.random() * l.length)];
@@ -20,9 +23,15 @@ export default class WorldScene extends Phaser.Scene {
     groundTypes: {[key: number]: object} = {};
     offsetted: boolean;
 
+    PlayerGroup: Phaser.Physics.Arcade.Group;
+    PlayerProjectileGroup: Phaser.Physics.Arcade.Group;
+    EnemyGroup: Phaser.Physics.Arcade.Group;
+    EnemyProjectileGroup: Phaser.Physics.Arcade.Group;
+    enemy: Enemy;
+
     constructor() {
         super({ key: "WorldScene" });
-        // You can initialize your world data here
+
         this.worldData = {
             width: 1000,
             height: 1000,
@@ -90,24 +99,28 @@ export default class WorldScene extends Phaser.Scene {
             }
         });
 
+        // Player sprites
         this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
             frameWidth: 8,
             frameHeight: 8,
         });
+
+        // Enemy sprites
+        this.load.spritesheet("archbishopChars16x16", "rotmg/sheets/archbishopChars16x16.png", {
+            frameWidth: 16,
+            frameHeight: 16
+        });
     }
 
     create() {
+        // initialize collision groups
+        this.PlayerGroup = this.physics.add.group();
+        this.PlayerProjectileGroup = this.physics.add.group();
+        this.EnemyGroup = this.physics.add.group();
+        this.EnemyProjectileGroup = this.physics.add.group();    
+        
         this.player = new Player(this, 50, 50);
         this.cameras.main.startFollow(this.player);
-        this.cameras.main.roundPixels = true;
-
-        this.physics.world.setBounds(
-            0,
-            0,
-            this.worldData.width * this.TILE_SIZE,
-            this.worldData.height * this.TILE_SIZE
-        );
-        this.physics.world.setBoundsCollision(true, true, true, true);
         
         this.cameras.main.zoom = 4;
 
@@ -134,7 +147,18 @@ export default class WorldScene extends Phaser.Scene {
             }
             
         });
+        this.enemy = new Enemy(this, 100, 50, 'archbishopChars16x16', 7);
 
+        // add collisions between player projectile and enemy
+        // @ts-ignore
+        this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p: Projectile, e: Enemy) => {
+            p.handle_hit(e);
+            e.handle_hit_by(p);
+
+        })
+
+
+        
     }
 
     private _get_texture_from_tile(tile: any) {
