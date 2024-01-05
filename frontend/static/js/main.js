@@ -78931,10 +78931,10 @@ var require_phaser = __commonJS((exports, module) => {
 });
 
 // src/main.ts
-var import_phaser5 = __toESM(require_phaser(), 1);
+var import_phaser6 = __toESM(require_phaser(), 1);
 
 // src/WorldScene.ts
-var import_phaser4 = __toESM(require_phaser(), 1);
+var import_phaser5 = __toESM(require_phaser(), 1);
 
 // src/Player.ts
 var import_phaser2 = __toESM(require_phaser(), 1);
@@ -78952,7 +78952,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.PlayerProjectileGroup.add(this);
-    const { max_duration, damage, speed, shot_angle } = projectileConfig;
+    const { max_duration, damage, speed, player_looking, shot_angle } = projectileConfig;
     this.speed = speed;
     this.shot_angle = shot_angle;
     this.max_duration = max_duration;
@@ -78961,7 +78961,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     this.setOrigin(0, 0.5);
     setTimeout(() => this.destroy(), this.max_duration);
     const vector = import_phaser.default.Math.Vector2.ONE.clone();
-    const actual_angle = import_phaser.default.Math.Angle.WrapDegrees(this.shot_angle + this.scene.player.looking());
+    const actual_angle = import_phaser.default.Math.Angle.WrapDegrees(this.shot_angle + player_looking);
     vector.setAngle(actual_angle);
     vector.scale(this.speed);
     this.setAngle(import_phaser.default.Math.RadToDeg(actual_angle));
@@ -79014,7 +79014,48 @@ class ActiveWeapon {
     this.isShooting = true;
     this.shotInterval = setInterval(() => {
       for (let projectile of this.projectilesDefinitions) {
-        new Projectile(world, this.player.x, this.player.y, "projectile", projectile);
+        new Projectile(world, this.player.x, this.player.y, "projectile", {
+          ...projectile,
+          player_looking: this.player.looking()
+        });
+      }
+    }, this.fireInterval);
+  }
+  stopShooting() {
+    if (!this.isShooting)
+      return;
+    this.isShooting = false;
+    clearInterval(this.shotInterval);
+  }
+  update() {
+  }
+}
+
+class RemoteActiveWeapon {
+  isShooting = false;
+  fireInterval;
+  projectilesDefinitions;
+  projectiles;
+  shotInterval;
+  player;
+  constructor(player, weaponDefinition) {
+    this.player = player;
+    const { projectiles, fireInterval } = weaponDefinition;
+    this.projectilesDefinitions = projectiles;
+    this.fireInterval = fireInterval;
+    this.projectiles = [];
+  }
+  startShooting() {
+    if (this.isShooting)
+      return;
+    const world = this.player.scene;
+    this.isShooting = true;
+    this.shotInterval = setInterval(() => {
+      for (let projectile of this.projectilesDefinitions) {
+        new Projectile(world, this.player.x, this.player.y, "projectile", {
+          ...projectile,
+          player_looking: this.player.looking()
+        });
       }
     }, this.fireInterval);
   }
@@ -81688,7 +81729,8 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
       x: this.x,
       y: this.y,
       velocity: [vel.x, vel.y],
-      is_shooting: this.weapon?.autoShootOn || false,
+      is_shooting: this.weapon?.isShooting || false,
+      looking: this.looking(),
       inventory: [0],
       shots: this.shots || []
     };
@@ -81745,12 +81787,48 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
   }
 }
 
+// src/RemotePlayer.ts
+var import_phaser4 = __toESM(require_phaser(), 1);
+class RemotePlayer extends import_phaser4.default.Physics.Arcade.Sprite {
+  weapon;
+  shots;
+  looking_angle;
+  id;
+  constructor(scene, x, y, id) {
+    super(scene, x, y, "player");
+    this.id = id;
+    scene.add.existing(this);
+    this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
+    this.looking_angle = 0;
+    this.weapon = new RemoteActiveWeapon(this, {
+      fireInterval: 100,
+      projectiles: [
+        {
+          max_duration: 250,
+          damage: 250,
+          speed: 90,
+          shot_angle: 0
+        }
+      ]
+    });
+  }
+  looking() {
+    return this.looking_angle;
+  }
+  update() {
+    const camera_rotation = -this.scene.cameras.main.rotation;
+    this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
+    this.setRotation(camera_rotation);
+  }
+}
+
 // src/WorldScene.ts
-class WorldScene extends import_phaser4.default.Scene {
+class WorldScene extends import_phaser5.default.Scene {
   worldData;
   TILE_SIZE = 8;
   visibleTiles = {};
   player;
+  remotePlayers = {};
   groundTypes = {};
   offsetted;
   PlayerGroup;
@@ -81836,6 +81914,21 @@ class WorldScene extends import_phaser4.default.Scene {
         this.load_player_tile(key, map2[key]);
       }
     });
+    socket4.on("PLAYER_STATE", (data) => {
+      const { id, x, y, looking, is_shooting } = data;
+      if (id in this.remotePlayers) {
+        this.remotePlayers[id].x = x;
+        this.remotePlayers[id].y = y;
+      } else {
+        this.remotePlayers[id] = new RemotePlayer(this, x, y, id);
+      }
+      this.remotePlayers[id].looking_angle = looking;
+      if (is_shooting) {
+        this.remotePlayers[id].weapon.startShooting();
+      } else {
+        this.remotePlayers[id].weapon.stopShooting();
+      }
+    });
     this.rotate_left = this.input.keyboard.addKey("Q");
     this.rotate_right = this.input.keyboard.addKey("E");
     this.PlayerGroup = this.physics.add.group();
@@ -81912,13 +82005,16 @@ class WorldScene extends import_phaser4.default.Scene {
       this.cameras.main.rotation -= 0.02;
     }
     this.player?.update();
+    for (const key in this.remotePlayers) {
+      this.remotePlayers[key].update();
+    }
     this.enemy?.update();
   }
 }
 
 // src/main.ts
 var config = {
-  type: import_phaser5.default.AUTO,
+  type: import_phaser6.default.AUTO,
   width: 1024,
   height: 576,
   physics: {
@@ -81928,11 +82024,11 @@ var config = {
     }
   },
   scale: {
-    mode: import_phaser5.default.Scale.FIT,
-    autoCenter: import_phaser5.default.Scale.CENTER_BOTH
+    mode: import_phaser6.default.Scale.FIT,
+    autoCenter: import_phaser6.default.Scale.CENTER_BOTH
   },
   scene: [WorldScene],
   backgroundColor: "#000000",
   pixelArt: true
 };
-var game = new import_phaser5.default.Game(config);
+var game = new import_phaser6.default.Game(config);

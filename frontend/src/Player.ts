@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import ActiveWeapon from './Weapon';
+import {ActiveWeapon} from './Weapon';
 import type WorldScene from './WorldScene';
 import { socket } from './Networking';
 import { EntityDepthFunctions } from './EntityDepths';
@@ -63,6 +63,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
+    // @ts-ignore
     const camera_rotation = -this.scene.cameras.main.rotation;
     // Handle player movement
     let vel = Phaser.Math.Vector2.ZERO.clone();
@@ -93,7 +94,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         x: this.x,
         y: this.y,
         velocity: [vel.x, vel.y],
-        is_shooting: this.weapon?.autoShootOn || false,
+        is_shooting: this.weapon?.isShooting || false,
+        looking: this.looking(),
         inventory: [0],
         shots: this.shots || []
     }

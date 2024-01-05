@@ -1,7 +1,7 @@
 import flask
 from worlds import world
 from flask import Flask, request
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 
 from auth import Auth
 import network
@@ -15,9 +15,16 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 sessions: dict[str, tuple] = {}
- 
+
+@app.route('/')
+def index():
+    return flask.send_from_directory(
+        '../frontend',
+        'index.html'
+    )
+
 @app.route('/<path:name>')
-def index(name):
+def serve(name):
     """
     Host the frontend code. All files are located in the frontend directory in the root.
     Serve files from there, for developer server. Additionally.
@@ -45,6 +52,10 @@ def client_handler(room: str):
             return
 
         socketio.emit('WORLD_STATE', player.get_world_state(), to=room) 
+
+        # also broadcast this players state to all other players
+     
+        
         time.sleep(0.01)
 
 
@@ -88,6 +99,7 @@ def M_PLAYER_STATE(data: dict):
     y = data['y']
     velocity = data['velocity']
     is_shooting = data['is_shooting']
+    looking = data['looking']
     inventory = data['inventory']
     shots = data['shots']
 
@@ -97,8 +109,20 @@ def M_PLAYER_STATE(data: dict):
     session_token = request.sid
     player: Archer = sessions[session_token]
     player.update_pos(x, y)
-        
 
+    player.velocity = velocity
+    player.is_shooting = is_shooting
+    player.looking = looking 
+    player.inventory = inventory
+    player.shots = shots
+
+    emit('PLAYER_STATE', {
+        'id': request.sid,
+        'x': player.x,
+        'y': player.y,
+        'looking': player.looking,
+        'is_shooting': player.is_shooting
+    }, broadcast=True, include_self=False)
 
 
 if __name__ == "__main__":

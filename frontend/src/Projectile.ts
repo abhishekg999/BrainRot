@@ -19,10 +19,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         (scene as WorldScene).PlayerProjectileGroup.add(this);
-        // this.setCollisionCategory(CollisionCategory.PLAYER_PROJECTILE)
-        // this.setCollidesWith(CollisionCategory.ENEMY);
-
-        const { max_duration, damage, speed, shot_angle } = projectileConfig;
+        const { max_duration, damage, speed, player_looking, shot_angle } = projectileConfig;
         
         this.speed = speed;
         this.shot_angle = shot_angle; // relative to player looking for now
@@ -38,7 +35,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         setTimeout(() => this.destroy(), this.max_duration);
 
         const vector = Phaser.Math.Vector2.ONE.clone();
-        const actual_angle = Phaser.Math.Angle.WrapDegrees(this.shot_angle + (this.scene as WorldScene).player.looking());
+        const actual_angle = Phaser.Math.Angle.WrapDegrees(this.shot_angle + player_looking);
         vector.setAngle(actual_angle);
         vector.scale(this.speed);
 

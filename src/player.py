@@ -46,6 +46,7 @@ class Player(ABC):
 
         self.level      = 1
 
+        self.looking = 0
         self.is_shooting = False
         self.inventory_size = 8
 
@@ -86,7 +87,7 @@ class Player(ABC):
     def update_pos(self, x: int, y: int):
         self.x = x
         self.y = y
-
+    
 
     def destroy(self):
         self.world.remove_player(self)

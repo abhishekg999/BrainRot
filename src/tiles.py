@@ -11,7 +11,7 @@ with open('../rotmg/json/GroundTypes.json') as f:
 for tile in GroundTypes:
     tile['type'] = int(tile['type'], 16)
 
-SimpleTiles = [tile for tile in GroundTypes if "Texture" in tile]
+SimpleTiles = [tile for tile in GroundTypes if "Texture" in tile][:6]
 
 if __name__ == "__main__":
     print(list({x['type'] for x in SimpleTiles}))

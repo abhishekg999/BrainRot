@@ -5,6 +5,7 @@ import { getGroundTypes } from "./GroundTypes";
 import Enemy from "./Enemy";
 import type Projectile from "./Projectile";
 import { readyForSocket, socket } from "./Networking";
+import RemotePlayer from "./RemotePlayer";
 
 const random_choice = (l: any[]) => {
     return l[Math.floor(Math.random() * l.length)];
@@ -20,6 +21,7 @@ export default class WorldScene extends Phaser.Scene {
     private readonly TILE_SIZE = 8;
     private visibleTiles: { [key: number]: number } = {};
     player: Player | undefined;
+    remotePlayers: {[key: string]: RemotePlayer} = {}; 
     groundTypes: { [key: number]: object } = {};
     offsetted: boolean;
 
@@ -27,37 +29,14 @@ export default class WorldScene extends Phaser.Scene {
     PlayerProjectileGroup: Phaser.Physics.Arcade.Group;
     EnemyGroup: Phaser.Physics.Arcade.Group;
     EnemyProjectileGroup: Phaser.Physics.Arcade.Group;
+
     enemy: Enemy;
+
     rotate_left: Phaser.Input.Keyboard.Key;
     rotate_right: Phaser.Input.Keyboard.Key;
 
     constructor() {
         super({ key: "WorldScene" });
-
-        // this.worldData = {
-        //     width: 1000,
-        //     height: 1000,
-        //     map: [],
-        //     loadVisibility: 20,
-        // };
-
-        // // testing - just load the map client side
-        // for (let y = 0; y < this.worldData.height; y++) {
-        //     let row = [];
-        //     for (let x = 0; x < this.worldData.width; x++) {
-        //         row.push(
-        //             random_choice([
-        //                 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 141,
-        //                 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152,
-        //                 154, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165,
-        //                 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176,
-        //                 177, 178, 179, 180, 181, 182, 183, 186, 187, 188, 189,
-        //                 190, 191,
-        //             ])
-        //         );
-        //     }
-        //     this.worldData.map.push(row);
-        // }
     }
 
     preload() {
@@ -129,7 +108,7 @@ export default class WorldScene extends Phaser.Scene {
     create() {
         // setup listeners
         socket.on("PLAYER_WORLD_INIT", (data) => {
-            const map: {[key: string]: number} = data.map;
+            const map: { [key: string]: number } = data.map;
             for (let key in map) {
                 this.load_player_tile(key, map[key]);
             }
@@ -149,21 +128,36 @@ export default class WorldScene extends Phaser.Scene {
             // now initialize player
             this.player = new Player(this, x, y);
             this.cameras.main.startFollow(this.player);
-
-            
-            // maybe socket.off here? but not necessary
         });
 
         socket.on("WORLD_STATE", (data) => {
-            const map: {[key: string]: number} = data.map;
+            const map: { [key: string]: number } = data.map;
             for (let key in map) {
                 this.load_player_tile(key, map[key]);
             }
         });
 
+        socket.on("PLAYER_STATE", (data) => {
+            const {id, x, y, looking, is_shooting} = data;
+            if (id in this.remotePlayers) {
+                this.remotePlayers[id].x = x;
+                this.remotePlayers[id].y = y;                
+            } else {
+                this.remotePlayers[id] = new RemotePlayer(this, x, y, id);
+            }     
+
+            this.remotePlayers[id].looking_angle = looking;
+            if (is_shooting) {
+                this.remotePlayers[id].weapon.startShooting();
+            } else {
+                this.remotePlayers[id].weapon.stopShooting();
+            }
+        });
+
+
         this.rotate_left = this.input.keyboard.addKey("Q");
         this.rotate_right = this.input.keyboard.addKey("E");
-        
+
         // initialize collision groups
         this.PlayerGroup = this.physics.add.group();
         this.PlayerProjectileGroup = this.physics.add.group();
@@ -198,24 +192,21 @@ export default class WorldScene extends Phaser.Scene {
 
         const reset_rotate_key = this.input.keyboard.addKey("Z");
         reset_rotate_key.addListener("up", () => {
+            // @ts-ignore
             this.cameras.main.rotation = 0;
-        })
+        });
 
         this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
 
         // add collisions between player projectile and enemy
-        
-        this.physics.add.overlap(
-            this.PlayerProjectileGroup,
-            this.EnemyGroup,
-            // @ts-ignore
-            (p: Projectile, e: Enemy) => { 
-                p.handleHit(e);
-                e.handleHitByProjectile(p);
-            }
-        );
 
-
+        this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, ((
+            p: Projectile,
+            e: Enemy
+        ) => {
+            p.handleHit(e);
+            e.handleHitByProjectile(p);
+        }) as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback);
 
         // WORLD IS NOW READY
         readyForSocket();
@@ -231,7 +222,7 @@ export default class WorldScene extends Phaser.Scene {
 
     private _load_player_tile(pos: [number, number], tileType: number): void {
         const [y, x] = pos;
-        
+
         const tile = this.groundTypes[tileType];
         const tileTexture = this._get_texture_from_tile(tile);
         const tileIndex = this._get_texture_index_from_tile(tile);
@@ -251,10 +242,15 @@ export default class WorldScene extends Phaser.Scene {
         }
     }
 
-    private load_player_tile(pos: [number, number] | string, tileType: number) : void {
+    private load_player_tile(
+        pos: [number, number] | string,
+        tileType: number
+    ): void {
         if (typeof pos === "string") {
             // @ts-ignore
-            const _pos: [number, number] = pos.split(',').map((x) => parseInt(x))
+            const _pos: [number, number] = pos
+                .split(",")
+                .map((x) => parseInt(x));
             this._load_player_tile(_pos, tileType);
         } else {
             this._load_player_tile(pos, tileType);
@@ -277,15 +273,19 @@ export default class WorldScene extends Phaser.Scene {
         // }
 
         if (this.rotate_left.isDown) {
+            // @ts-ignore
             this.cameras.main.rotation += 0.02;
         }
 
         if (this.rotate_right.isDown) {
+            // @ts-ignore
             this.cameras.main.rotation -= 0.02;
         }
 
-        
         this.player?.update();
+        for (const key in this.remotePlayers) {
+            this.remotePlayers[key].update();
+        }
         this.enemy?.update();
     }
 }
