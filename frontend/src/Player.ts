@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import ActiveWeapon from './Weapon';
 import { CollisionCategory } from './CollisionCategories';
 import type WorldScene from './WorldScene';
+import { socket } from './Networking';
 
 type WASDControls = {
   W: Phaser.Input.Keyboard.Key;
@@ -29,14 +30,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.cursors = this._createControls();
     this.mouse = scene.input.mousePointer;
 
-    // setInterval(() => {
-    //   this.mouse.updateWorldPoint(scene.cameras.main);
-    //   const vec = new Phaser.Math.Vector2(this.mouse.worldX - this.x, this.mouse.worldY - this.y);
-    //   vec.normalize();
-    //   console.log(Phaser.Math.RadToDeg(vec.angle()));
-
-    // }, 500);
-
     this.speed = 100;
     this.setDepth(100);
 
@@ -46,21 +39,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       fireInterval: 100,
       projectiles: [
         {
-          max_duration: 2000,
+          max_duration: 211,
           damage: 200,
-          speed: 60,
+          speed: 160 / 4,
           shot_angle: 0
         },
         {
-          max_duration: 2000,
+          max_duration: 211,
           damage: 100,
-          speed: 60,
+          speed: 160 / 4,
           shot_angle: -0.4
         },
         {
-          max_duration: 2000,
+          max_duration: 211,
           damage: 100,
-          speed: 60,
+          speed: 160 / 4,
           shot_angle: 0.4
         },
       ]
@@ -95,5 +88,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     vel.normalize();
     vel.scale(this.speed);
     this.setVelocity(vel.x, vel.y);
+
+    
+    const state = {
+        x: this.x,
+        y: this.y,
+        velocity: [vel.x, vel.y],
+        is_shooting: this.weapon?.autoShootOn || false,
+        inventory: [0],
+        shots: [0]
+    }
+    // now send the player state over
+    socket.emit("PLAYER_STATE", state);
   }
 }

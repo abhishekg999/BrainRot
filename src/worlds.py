@@ -21,7 +21,7 @@ class World(ABCWorld):
     width: int
     height: int
     world: list[list[int]]
-    players: list[Player]
+    players: dict[int, Player]
 
     def __init__(self):
         self.tile_width = WORLD_WIDTH
@@ -31,8 +31,8 @@ class World(ABCWorld):
         self.height = TILE_SIZE * WORLD_HEIGHT
 
         self.world = [[random.choice(SimpleTiles)['type'] for _ in range(WORLD_WIDTH)] for _ in range(WORLD_HEIGHT)]
-        self.players = []
-        self.objects = []
+        self.players = {}
+        self.objects = {}
 
     
     def _get_tiles_in_radius_around_position(self, _x, _y, radius):
@@ -48,10 +48,12 @@ class World(ABCWorld):
         return tiles            
 
     def add_player(self, player: Player):
-        self.players.append(player)
+        self.players[player.id] = player
         # then maybe configure some observers idk yet
 
+    def remove_player(self, player: Player):
+        del self.players[player.id]
+
 world = World()
-print(world._get_tiles_in_radius_around_position(100, 100, 5))
 
 

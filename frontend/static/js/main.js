@@ -78959,6 +78959,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     this.damage = damage;
     this.setDepth(101);
     setTimeout(() => this.destroy(), this.max_duration);
+    this.setOrigin(0, 1);
     const vector = import_phaser.default.Math.Vector2.ONE.clone();
     const actual_angle = import_phaser.default.Math.Angle.WrapDegrees(this.shot_angle + this.scene.player.looking());
     vector.setAngle(actual_angle);
@@ -79024,273 +79025,6 @@ class ActiveWeapon {
     clearInterval(this.shotInterval);
   }
   update() {
-  }
-}
-
-// src/Player.ts
-class Player extends import_phaser2.default.Physics.Arcade.Sprite {
-  cursors;
-  speed;
-  mouse;
-  weapon;
-  constructor(scene, x, y) {
-    super(scene, x, y, "player");
-    scene.add.existing(this);
-    scene.physics.add.existing(this);
-    scene.PlayerGroup.add(this);
-    this.setSize(this.width * 0.7, this.height * 0.7);
-    this.cursors = this._createControls();
-    this.mouse = scene.input.mousePointer;
-    this.speed = 100;
-    this.setDepth(100);
-    this.weapon = new ActiveWeapon(this, {
-      fireInterval: 100,
-      projectiles: [
-        {
-          max_duration: 2000,
-          damage: 200,
-          speed: 60,
-          shot_angle: 0
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 60,
-          shot_angle: -0.4
-        },
-        {
-          max_duration: 2000,
-          damage: 100,
-          speed: 60,
-          shot_angle: 0.4
-        }
-      ]
-    });
-  }
-  _createControls() {
-    return this.scene.input.keyboard.addKeys("W,A,S,D");
-  }
-  looking() {
-    this.mouse.updateWorldPoint(this.scene.cameras.main);
-    const vec = new import_phaser2.default.Math.Vector2(this.mouse.worldX - this.x, this.mouse.worldY - this.y);
-    return vec.angle();
-  }
-  update() {
-    let vel = import_phaser2.default.Math.Vector2.ZERO.clone();
-    if (this.cursors.A?.isDown) {
-      vel.x = -1;
-    } else if (this.cursors.D?.isDown) {
-      vel.x = 1;
-    }
-    if (this.cursors.W?.isDown) {
-      vel.y = -1;
-    } else if (this.cursors.S?.isDown) {
-      vel.y = 1;
-    }
-    vel.normalize();
-    vel.scale(this.speed);
-    this.setVelocity(vel.x, vel.y);
-  }
-}
-
-// src/GroundTypes.ts
-var getGroundTypes = fetch("/rotmg/json/GroundTypes.json").then((r) => r.text()).then((r) => JSON.parse(r)["Ground"]);
-
-// src/Enemy.ts
-var import_phaser3 = __toESM(require_phaser(), 1);
-
-class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
-  max_health;
-  health;
-  healthBar;
-  constructor(scene, x, y, sprite_key, sprite_index) {
-    super(scene, x, y, sprite_key, sprite_index);
-    scene.add.existing(this);
-    scene.physics.add.existing(this);
-    scene.EnemyGroup.add(this);
-    this.setSize(this.width * 0.7, this.height * 0.7);
-    this.setDepth(100);
-    this.max_health = 60000;
-    this.health = this.max_health;
-    this.healthBar = scene.add.graphics();
-    this.updateHealthBar();
-    this.healthBar.setDepth(101);
-    this.healthBar.y = this.y - 20;
-  }
-  handle_hit_by(projectile) {
-    this.health -= projectile.damage;
-    this.updateHealthBar();
-    if (this.health <= 0) {
-      this.healthBar.destroy();
-      this.destroy();
-    }
-  }
-  updateHealthBar() {
-    this.healthBar.clear();
-    this.healthBar.fillStyle(16711680, 1);
-    this.healthBar.fillRect(this.x - 30, this.healthBar.y, 60, 5);
-    this.healthBar.fillStyle(65280, 1);
-    const healthWidth = this.health / this.max_health * 60;
-    this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
-  }
-}
-
-// src/WorldScene.ts
-var random_choice = (l) => {
-  return l[Math.floor(Math.random() * l.length)];
-};
-
-class WorldScene extends import_phaser4.default.Scene {
-  worldData;
-  TILE_SIZE = 8;
-  visibleTiles = {};
-  player;
-  groundTypes = {};
-  offsetted;
-  PlayerGroup;
-  PlayerProjectileGroup;
-  EnemyGroup;
-  EnemyProjectileGroup;
-  enemy;
-  constructor() {
-    super({ key: "WorldScene" });
-    this.worldData = {
-      width: 1000,
-      height: 1000,
-      map: [],
-      loadVisibility: 20
-    };
-    for (let y = 0;y < this.worldData.height; y++) {
-      let row = [];
-      for (let x = 0;x < this.worldData.width; x++) {
-        row.push(random_choice([129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 154, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 186, 187, 188, 189, 190, 191]));
-      }
-      this.worldData.map.push(row);
-    }
-  }
-  preload() {
-    const groundTileSets = [
-      "SakuraEnvironment8x8",
-      "alienInvasionObjects8x8",
-      "ancientRuinsObjects8x8",
-      "archbishopObjects8x8",
-      "autumnNexusObjects8x8",
-      "crystalCaveObjects8x8",
-      "cursedLibraryObjects8x8",
-      "d3LofiObjEmbed",
-      "epicHiveObjects8x8",
-      "fungalCavernObjects8x8",
-      "innerWorkingsObjects8x8",
-      "lairOfDraconisObjects8x8",
-      "lofiEnvironment",
-      "lofiEnvironment2",
-      "lofiEnvironment3",
-      "lofiObj3",
-      "lostHallsObjects8x8",
-      "magicWoodsObjects8x8",
-      "mountainTempleObjects8x8",
-      "oryxHordeObjects8x8",
-      "oryxSanctuaryObjects8x8",
-      "parasiteDenObjects8x8",
-      "santaWorkshopObjects8x8",
-      "secludedThicketObjects8x8",
-      "stPatricksObjects8x8",
-      "summerNexusObjects8x8",
-      "theMachineObjects8x8",
-      "xmasNexusObjects8x8"
-    ];
-    for (let tileset of groundTileSets) {
-      this.load.spritesheet(tileset, `rotmg/sheets/${tileset}.png`, {
-        frameWidth: 8,
-        frameHeight: 8
-      });
-    }
-    getGroundTypes.then((data) => {
-      for (let tile of data) {
-        this.groundTypes[parseInt(tile.type)] = tile;
-      }
-    });
-    this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
-      frameWidth: 8,
-      frameHeight: 8
-    });
-    this.load.spritesheet("archbishopChars16x16", "rotmg/sheets/archbishopChars16x16.png", {
-      frameWidth: 16,
-      frameHeight: 16
-    });
-  }
-  create() {
-    this.PlayerGroup = this.physics.add.group();
-    this.PlayerProjectileGroup = this.physics.add.group();
-    this.EnemyGroup = this.physics.add.group();
-    this.EnemyProjectileGroup = this.physics.add.group();
-    this.player = new Player(this, 50, 50);
-    this.cameras.main.startFollow(this.player);
-    this.cameras.main.zoom = 4;
-    const minus_key = this.input.keyboard.addKey("O");
-    const plus_key = this.input.keyboard.addKey("P");
-    minus_key.addListener("up", () => {
-      this.cameras.main.zoom = Math.max(this.cameras.main.zoom - 1, 1);
-    });
-    plus_key.addListener("up", () => {
-      this.cameras.main.zoom = Math.min(this.cameras.main.zoom + 1, 10);
-    });
-    this.offsetted = false;
-    const offset_key = this.input.keyboard.addKey("X");
-    offset_key.addListener("up", () => {
-      if (this.offsetted) {
-        this.cameras.main.setFollowOffset(0, 0);
-        this.offsetted = false;
-      } else {
-        this.cameras.main.setFollowOffset(0, 25);
-        this.offsetted = true;
-      }
-    });
-    this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
-    this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p, e) => {
-      p.handle_hit(e);
-      e.handle_hit_by(p);
-    });
-  }
-  _get_texture_from_tile(tile) {
-    return tile["Texture"]["File"];
-  }
-  _get_texture_index_from_tile(tile) {
-    return parseInt(tile["Texture"]["Index"]);
-  }
-  _load_player_tile(pos, tileType) {
-    const [y, x] = pos;
-    const tile = this.groundTypes[tileType];
-    const tileTexture = this._get_texture_from_tile(tile);
-    const tileIndex = this._get_texture_index_from_tile(tile);
-    if ([y, x] in this.visibleTiles) {
-      this.visibleTiles[[y, x]].setTexture(tileTexture, tileIndex);
-    } else {
-      this.visibleTiles[[y, x]] = this.add.sprite(x * this.TILE_SIZE, y * this.TILE_SIZE, "alienInvasionObjects8x8", 0);
-    }
-  }
-  _unload_player_tile(pos) {
-    if (pos in this.visibleTiles) {
-      this.visibleTiles[pos].setTexture("alienInvasionObjects8x8", 0);
-    } else {
-    }
-  }
-  update_map(map) {
-    const playerTileX = Math.floor(this.player.x / this.TILE_SIZE);
-    const playerTileY = Math.floor(this.player.y / this.TILE_SIZE);
-    const radius = this.worldData.loadVisibility;
-    for (let y = playerTileY - radius;y <= playerTileY + radius; y++) {
-      for (let x = playerTileX - radius;x <= playerTileX + radius; x++) {
-        if (y >= 0 && y < this.worldData.height && x >= 0 && x < this.worldData.width) {
-          const tileType = map[y][x];
-          this._load_player_tile([y, x], tileType);
-        }
-      }
-    }
-  }
-  update(time, delta) {
-    this.update_map(this.worldData.map);
-    this.player.update();
   }
 }
 
@@ -81884,6 +81618,273 @@ socket4.emit("HELLO_SERVER", {
 socket4.on("HELLO_CLIENT", (d) => {
   console.log(`SERVER SAYS: ${JSON.stringify(d)}`);
 });
+
+// src/Player.ts
+class Player extends import_phaser2.default.Physics.Arcade.Sprite {
+  cursors;
+  speed;
+  mouse;
+  weapon;
+  constructor(scene, x, y) {
+    super(scene, x, y, "player");
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
+    scene.PlayerGroup.add(this);
+    this.setSize(this.width * 0.7, this.height * 0.7);
+    this.cursors = this._createControls();
+    this.mouse = scene.input.mousePointer;
+    this.speed = 100;
+    this.setDepth(100);
+    this.weapon = new ActiveWeapon(this, {
+      fireInterval: 100,
+      projectiles: [
+        {
+          max_duration: 211,
+          damage: 200,
+          speed: 40,
+          shot_angle: 0
+        },
+        {
+          max_duration: 211,
+          damage: 100,
+          speed: 40,
+          shot_angle: -0.4
+        },
+        {
+          max_duration: 211,
+          damage: 100,
+          speed: 40,
+          shot_angle: 0.4
+        }
+      ]
+    });
+  }
+  _createControls() {
+    return this.scene.input.keyboard.addKeys("W,A,S,D");
+  }
+  looking() {
+    this.mouse.updateWorldPoint(this.scene.cameras.main);
+    const vec = new import_phaser2.default.Math.Vector2(this.mouse.worldX - this.x, this.mouse.worldY - this.y);
+    return vec.angle();
+  }
+  update() {
+    let vel = import_phaser2.default.Math.Vector2.ZERO.clone();
+    if (this.cursors.A?.isDown) {
+      vel.x = -1;
+    } else if (this.cursors.D?.isDown) {
+      vel.x = 1;
+    }
+    if (this.cursors.W?.isDown) {
+      vel.y = -1;
+    } else if (this.cursors.S?.isDown) {
+      vel.y = 1;
+    }
+    vel.normalize();
+    vel.scale(this.speed);
+    this.setVelocity(vel.x, vel.y);
+    const state = {
+      x: this.x,
+      y: this.y,
+      velocity: [vel.x, vel.y],
+      is_shooting: this.weapon?.autoShootOn || false,
+      inventory: [0],
+      shots: [0]
+    };
+    socket4.emit("PLAYER_STATE", state);
+  }
+}
+
+// src/GroundTypes.ts
+var getGroundTypes = fetch("/rotmg/json/GroundTypes.json").then((r) => r.text()).then((r) => JSON.parse(r)["Ground"]);
+
+// src/Enemy.ts
+var import_phaser3 = __toESM(require_phaser(), 1);
+
+class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
+  max_health;
+  health;
+  healthBar;
+  constructor(scene, x, y, sprite_key, sprite_index) {
+    super(scene, x, y, sprite_key, sprite_index);
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
+    scene.EnemyGroup.add(this);
+    this.setSize(this.width * 0.7, this.height * 0.7);
+    this.setDepth(100);
+    this.max_health = 60000;
+    this.health = this.max_health;
+    this.healthBar = scene.add.graphics();
+    this.updateHealthBar();
+    this.healthBar.setDepth(101);
+    this.healthBar.y = this.y - 20;
+  }
+  handle_hit_by(projectile) {
+    this.health -= projectile.damage;
+    this.updateHealthBar();
+    if (this.health <= 0) {
+      this.healthBar.destroy();
+      this.destroy();
+    }
+  }
+  updateHealthBar() {
+    this.healthBar.clear();
+    this.healthBar.fillStyle(16711680, 1);
+    this.healthBar.fillRect(this.x - 30, this.healthBar.y, 60, 5);
+    this.healthBar.fillStyle(65280, 1);
+    const healthWidth = this.health / this.max_health * 60;
+    this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
+  }
+}
+
+// src/WorldScene.ts
+class WorldScene extends import_phaser4.default.Scene {
+  worldData;
+  TILE_SIZE = 8;
+  visibleTiles = {};
+  player;
+  groundTypes = {};
+  offsetted;
+  PlayerGroup;
+  PlayerProjectileGroup;
+  EnemyGroup;
+  EnemyProjectileGroup;
+  enemy;
+  constructor() {
+    super({ key: "WorldScene" });
+  }
+  preload() {
+    const groundTileSets = [
+      "SakuraEnvironment8x8",
+      "alienInvasionObjects8x8",
+      "ancientRuinsObjects8x8",
+      "archbishopObjects8x8",
+      "autumnNexusObjects8x8",
+      "crystalCaveObjects8x8",
+      "cursedLibraryObjects8x8",
+      "d3LofiObjEmbed",
+      "epicHiveObjects8x8",
+      "fungalCavernObjects8x8",
+      "innerWorkingsObjects8x8",
+      "lairOfDraconisObjects8x8",
+      "lofiEnvironment",
+      "lofiEnvironment2",
+      "lofiEnvironment3",
+      "lofiObj3",
+      "lostHallsObjects8x8",
+      "magicWoodsObjects8x8",
+      "mountainTempleObjects8x8",
+      "oryxHordeObjects8x8",
+      "oryxSanctuaryObjects8x8",
+      "parasiteDenObjects8x8",
+      "santaWorkshopObjects8x8",
+      "secludedThicketObjects8x8",
+      "stPatricksObjects8x8",
+      "summerNexusObjects8x8",
+      "theMachineObjects8x8",
+      "xmasNexusObjects8x8"
+    ];
+    for (let tileset of groundTileSets) {
+      this.load.spritesheet(tileset, `rotmg/sheets/${tileset}.png`, {
+        frameWidth: 8,
+        frameHeight: 8
+      });
+    }
+    getGroundTypes.then((data) => {
+      for (let tile of data) {
+        this.groundTypes[parseInt(tile.type)] = tile;
+      }
+    });
+    this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
+      frameWidth: 8,
+      frameHeight: 8
+    });
+    this.load.spritesheet("archbishopChars16x16", "rotmg/sheets/archbishopChars16x16.png", {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+  }
+  create() {
+    socket4.on("PLAYER_WORLD_INIT", (data) => {
+      const map2 = data.map;
+      for (let key in map2) {
+        this.load_player_tile(key, map2[key]);
+      }
+      const x = data.x;
+      const y = data.y;
+      this.player = new Player(this, x, y);
+      this.cameras.main.startFollow(this.player);
+    });
+    socket4.on("WORLD_STATE", (data) => {
+      const map2 = data.map;
+      for (let key in map2) {
+        this.load_player_tile(key, map2[key]);
+      }
+    });
+    this.PlayerGroup = this.physics.add.group();
+    this.PlayerProjectileGroup = this.physics.add.group();
+    this.EnemyGroup = this.physics.add.group();
+    this.EnemyProjectileGroup = this.physics.add.group();
+    this.cameras.main.zoom = 4;
+    const minus_key = this.input.keyboard.addKey("O");
+    const plus_key = this.input.keyboard.addKey("P");
+    minus_key.addListener("up", () => {
+      this.cameras.main.zoom = Math.max(this.cameras.main.zoom - 1, 1);
+    });
+    plus_key.addListener("up", () => {
+      this.cameras.main.zoom = Math.min(this.cameras.main.zoom + 1, 10);
+    });
+    this.offsetted = false;
+    const offset_key = this.input.keyboard.addKey("X");
+    offset_key.addListener("up", () => {
+      if (this.offsetted) {
+        this.cameras.main.setFollowOffset(0, 0);
+        this.offsetted = false;
+      } else {
+        this.cameras.main.setFollowOffset(0, 25);
+        this.offsetted = true;
+      }
+    });
+    this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
+    this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p, e) => {
+      p.handle_hit(e);
+      e.handle_hit_by(p);
+    });
+  }
+  _get_texture_from_tile(tile) {
+    return tile["Texture"]["File"];
+  }
+  _get_texture_index_from_tile(tile) {
+    return parseInt(tile["Texture"]["Index"]);
+  }
+  _load_player_tile(pos, tileType) {
+    const [y, x] = pos;
+    const tile = this.groundTypes[tileType];
+    const tileTexture = this._get_texture_from_tile(tile);
+    const tileIndex = this._get_texture_index_from_tile(tile);
+    if ([y, x] in this.visibleTiles) {
+      this.visibleTiles[[y, x]].setTexture(tileTexture, tileIndex);
+    } else {
+      this.visibleTiles[[y, x]] = this.add.sprite(x * this.TILE_SIZE, y * this.TILE_SIZE, "alienInvasionObjects8x8", 0);
+    }
+  }
+  load_player_tile(pos, tileType) {
+    if (typeof pos === "string") {
+      const _pos = pos.split(",").map((x) => parseInt(x));
+      this._load_player_tile(_pos, tileType);
+    } else {
+      this._load_player_tile(pos, tileType);
+    }
+  }
+  _unload_player_tile(pos) {
+    if (pos in this.visibleTiles) {
+      this.visibleTiles[pos].setTexture("alienInvasionObjects8x8", 0);
+    } else {
+    }
+  }
+  update(time, delta) {
+    this.player?.update();
+  }
+}
 
 // src/main.ts
 var config = {

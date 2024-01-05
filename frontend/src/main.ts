@@ -20,6 +20,7 @@ const config: Phaser.Types.Core.GameConfig = {
 	scene: [WorldScene],
 	backgroundColor: '#000000',
 	pixelArt: true,
+    
 };
 
 

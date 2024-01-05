@@ -34,13 +34,11 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
 
         // destroy the object no matter what after it expires?
         setTimeout(() => this.destroy(), this.max_duration);
-        // this.scene.physics.add.collider(this, (this.scene as WorldScene).player, () => {
-        //     console.log('hit');
-        //     this.destroy();
-        // });
+
+        // set projectile origin to be the bottom left of the sprite
+        this.setOrigin(0, 1);
 
         const vector = Phaser.Math.Vector2.ONE.clone();
-    
         const actual_angle = Phaser.Math.Angle.WrapDegrees(this.shot_angle + (this.scene as WorldScene).player.looking());
         vector.setAngle(actual_angle);
         vector.scale(this.speed);
