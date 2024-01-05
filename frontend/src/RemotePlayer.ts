@@ -1,9 +1,13 @@
+/**
+ * Remote player class represents another player playing in this world.
+ * Should follow a similar interface, but the "input" will be coming from ws.
+ */
+
 import Phaser from 'phaser';
 import ActiveWeapon from './Weapon';
 import type WorldScene from './WorldScene';
 import { socket } from './Networking';
 import { EntityDepthFunctions } from './EntityDepths';
-import { Vector } from 'matter';
 
 type WASDControls = {
   W: Phaser.Input.Keyboard.Key;
@@ -43,10 +47,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       fireInterval: 100,
       projectiles: [
         {
-          max_duration: 250,
-          damage: 250,
-          speed: 180 / 2,
+          max_duration: 211,
+          damage: 200,
+          speed: 160 / 4,
           shot_angle: 0
+        },
+        {
+          max_duration: 211,
+          damage: 100,
+          speed: 160 / 4,
+          shot_angle: -0.4
+        },
+        {
+          max_duration: 211,
+          damage: 100,
+          speed: 160 / 4,
+          shot_angle: 0.4
         },
       ]
     });
@@ -63,7 +79,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    const camera_rotation = -this.scene.cameras.main.rotation;
     // Handle player movement
     let vel = Phaser.Math.Vector2.ZERO.clone();
 
@@ -80,13 +95,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
     vel.normalize();
     vel.scale(this.speed);
-    vel.rotate(camera_rotation);
     this.setVelocity(vel.x, vel.y);
 
     // update depth
     this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
 
-    this.setRotation(camera_rotation);
     
     // now send the player state over
     const state = {

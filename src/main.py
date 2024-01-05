@@ -22,7 +22,6 @@ def index(name):
     Host the frontend code. All files are located in the frontend directory in the root.
     Serve files from there, for developer server. Additionally.
     """
-    print(1)
     return flask.send_from_directory(
         '../frontend',
         name

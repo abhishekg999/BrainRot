@@ -3,10 +3,8 @@ import Player from "./Player";
 import { getObjects } from "./Objects";
 import { getGroundTypes } from "./GroundTypes";
 import Enemy from "./Enemy";
-import { CollisionCategory } from "./CollisionCategories";
 import type Projectile from "./Projectile";
-import { socket } from "./Networking";
-import { stringify } from "querystring";
+import { readyForSocket, socket } from "./Networking";
 
 const random_choice = (l: any[]) => {
     return l[Math.floor(Math.random() * l.length)];
@@ -30,6 +28,8 @@ export default class WorldScene extends Phaser.Scene {
     EnemyGroup: Phaser.Physics.Arcade.Group;
     EnemyProjectileGroup: Phaser.Physics.Arcade.Group;
     enemy: Enemy;
+    rotate_left: Phaser.Input.Keyboard.Key;
+    rotate_right: Phaser.Input.Keyboard.Key;
 
     constructor() {
         super({ key: "WorldScene" });
@@ -77,7 +77,10 @@ export default class WorldScene extends Phaser.Scene {
             "lofiEnvironment",
             "lofiEnvironment2",
             "lofiEnvironment3",
+            "lofiObj2",
             "lofiObj3",
+            "lofiObj4",
+            "lofiProjs",
             "lostHallsObjects8x8",
             "magicWoodsObjects8x8",
             "mountainTempleObjects8x8",
@@ -134,9 +137,20 @@ export default class WorldScene extends Phaser.Scene {
             const x = data.x;
             const y = data.y;
 
+            // initialize world bounds
+            this.physics.world.setBounds(
+                32,
+                32,
+                (data.tile_width - 10) * this.TILE_SIZE,
+                (data.tile_height - 10) * this.TILE_SIZE
+            );
+            this.physics.world.setBoundsCollision(true, true, true, true);
+
             // now initialize player
             this.player = new Player(this, x, y);
             this.cameras.main.startFollow(this.player);
+
+            
             // maybe socket.off here? but not necessary
         });
 
@@ -147,7 +161,8 @@ export default class WorldScene extends Phaser.Scene {
             }
         });
 
-
+        this.rotate_left = this.input.keyboard.addKey("Q");
+        this.rotate_right = this.input.keyboard.addKey("E");
         
         // initialize collision groups
         this.PlayerGroup = this.physics.add.group();
@@ -170,6 +185,7 @@ export default class WorldScene extends Phaser.Scene {
 
         this.offsetted = false;
         const offset_key = this.input.keyboard.addKey("X");
+
         offset_key.addListener("up", () => {
             if (this.offsetted) {
                 this.cameras.main.setFollowOffset(0, 0);
@@ -180,6 +196,11 @@ export default class WorldScene extends Phaser.Scene {
             }
         });
 
+        const reset_rotate_key = this.input.keyboard.addKey("Z");
+        reset_rotate_key.addListener("up", () => {
+            this.cameras.main.rotation = 0;
+        })
+
         this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
 
         // add collisions between player projectile and enemy
@@ -189,10 +210,15 @@ export default class WorldScene extends Phaser.Scene {
             this.EnemyGroup,
             // @ts-ignore
             (p: Projectile, e: Enemy) => { 
-                p.handle_hit(e);
-                e.handle_hit_by(p);
+                p.handleHit(e);
+                e.handleHitByProjectile(p);
             }
         );
+
+
+
+        // WORLD IS NOW READY
+        readyForSocket();
     }
 
     private _get_texture_from_tile(tile: any) {
@@ -249,7 +275,17 @@ export default class WorldScene extends Phaser.Scene {
         // for (let pos in this.visibleTiles) {
         // 	this._unload_player_tile(pos)
         // }
+
+        if (this.rotate_left.isDown) {
+            this.cameras.main.rotation += 0.02;
+        }
+
+        if (this.rotate_right.isDown) {
+            this.cameras.main.rotation -= 0.02;
+        }
+
         
         this.player?.update();
+        this.enemy?.update();
     }
 }

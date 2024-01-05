@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import type WorldScene from './WorldScene';
 import type Projectile from './Projectile';
+import { EntityDepthFunctions } from './EntityDepths';
 
 export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     max_health: number;
@@ -17,7 +18,10 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
 
         this.setSize(this.width * 0.7, this.height * 0.7);
 
-        this.setDepth(100);
+        this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
+
+        // set origin to be near the feet, centered on x
+        this.setOrigin(0.5, 1);
 
         this.max_health = 60000;
         this.health = this.max_health;
@@ -31,8 +35,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.healthBar.y = this.y - 20;
     }
 
-    public handle_hit_by(projectile: Projectile) {
-        this.health -= projectile.damage;
+    public dealDamage(damage: number) {
+        this.health -= damage;
 
         // Update the health bar when hit
         this.updateHealthBar();
@@ -40,8 +44,12 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         if (this.health <= 0) {
             // Enemy defeated, handle accordingly
             this.healthBar.destroy();
-            this.destroy();
+            this.disableBody(true, true);
         }
+    }
+
+    public handleHitByProjectile(projectile: Projectile) {
+        this.dealDamage(projectile.damage);
     }
 
     private updateHealthBar() {
@@ -56,5 +64,10 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.healthBar.fillStyle(0x00FF00, 1);
         const healthWidth = (this.health / this.max_health) * 60;
         this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
+    }
+
+    update () {
+        this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
+        this.setRotation(-this.scene.cameras.main.rotation);
     }
 }

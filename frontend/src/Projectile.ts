@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 import type WorldScene from './WorldScene';
-import { CollisionCategory } from './CollisionCategories';
 import type Enemy from './Enemy';
 
 /**
@@ -14,7 +13,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
     damage: number;
 
     constructor(scene: Phaser.Scene, x: number, y: number, sprite_key: string, projectileConfig: any) {
-        super(scene, x, y, 'lostHallsObjects8x8', 16 * 10 + 3);
+        super(scene, x, y, 'lofiProjs', 0x2e);
         
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -32,11 +31,11 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
      
         this.setDepth(101);
 
+        // set projectile origin to be the bottom left of the sprite
+        this.setOrigin(0, 0.5);
+
         // destroy the object no matter what after it expires?
         setTimeout(() => this.destroy(), this.max_duration);
-
-        // set projectile origin to be the bottom left of the sprite
-        this.setOrigin(0, 1);
 
         const vector = Phaser.Math.Vector2.ONE.clone();
         const actual_angle = Phaser.Math.Angle.WrapDegrees(this.shot_angle + (this.scene as WorldScene).player.looking());
@@ -44,13 +43,13 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         vector.scale(this.speed);
 
         // change the sprite angle, this is currently wrong tho
-        this.setAngle(Phaser.Math.RadToDeg(actual_angle) + 45);
+        this.setAngle(Phaser.Math.RadToDeg(actual_angle));
 
 
         this.setVelocity(vector.x, vector.y);
     }
 
-    public handle_hit(enemy: Enemy) {
+    public handleHit(enemy: Enemy) {
         this.destroy();
     }
 } 

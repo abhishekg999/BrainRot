@@ -40,11 +40,12 @@ class World(ABCWorld):
         tile_y = _y // TILE_SIZE
 
         tiles = {}
-        for y in range(max(0, tile_y - radius), min(self.height, tile_y + radius)):
-            for x in range(max(0, tile_x - radius), min(self.width, tile_x + radius)):
+        for y in range(max(0, tile_y - radius), min(self.tile_height, tile_y + radius)):
+            for x in range(max(0, tile_x - radius), min(self.tile_width, tile_x + radius)):
                 # serialized in same format as js object
                 tiles[f"{y},{x}"] = self.world[y][x]
-
+    
+                
         return tiles            
 
     def add_player(self, player: Player):

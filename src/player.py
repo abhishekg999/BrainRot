@@ -68,6 +68,8 @@ class Player(ABC):
         data = {
             'x': self.x,
             'y': self.y,
+            'tile_width': self.world.tile_width,
+            'tile_height': self.world.tile_height,
             'map': tile_data,
         }
         return data

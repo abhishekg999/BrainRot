@@ -78948,7 +78948,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
   max_duration;
   damage;
   constructor(scene, x, y, sprite_key, projectileConfig) {
-    super(scene, x, y, "lostHallsObjects8x8", 163);
+    super(scene, x, y, "lofiProjs", 46);
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.PlayerProjectileGroup.add(this);
@@ -78958,16 +78958,16 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
     this.max_duration = max_duration;
     this.damage = damage;
     this.setDepth(101);
+    this.setOrigin(0, 0.5);
     setTimeout(() => this.destroy(), this.max_duration);
-    this.setOrigin(0, 1);
     const vector = import_phaser.default.Math.Vector2.ONE.clone();
     const actual_angle = import_phaser.default.Math.Angle.WrapDegrees(this.shot_angle + this.scene.player.looking());
     vector.setAngle(actual_angle);
     vector.scale(this.speed);
-    this.setAngle(import_phaser.default.Math.RadToDeg(actual_angle) + 45);
+    this.setAngle(import_phaser.default.Math.RadToDeg(actual_angle));
     this.setVelocity(vector.x, vector.y);
   }
-  handle_hit(enemy) {
+  handleHit(enemy) {
     this.destroy();
   }
 }
@@ -81612,12 +81612,20 @@ Object.assign(lookup2, {
 
 // src/Networking.ts
 var socket4 = lookup2();
-socket4.emit("HELLO_SERVER", {
-  identity: true
-});
 socket4.on("HELLO_CLIENT", (d) => {
   console.log(`SERVER SAYS: ${JSON.stringify(d)}`);
 });
+var readyForSocket = () => {
+  socket4.emit("HELLO_SERVER", {
+    identity: true
+  });
+};
+
+// src/EntityDepths.ts
+var EntityDepthFunctions = {
+  PLAYER_DEPTH: (y) => 1e4 + y,
+  ENEMY_DEPTH: (y) => 1e4 + y
+};
 
 // src/Player.ts
 class Player extends import_phaser2.default.Physics.Arcade.Sprite {
@@ -81625,36 +81633,26 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
   speed;
   mouse;
   weapon;
+  shots;
   constructor(scene, x, y) {
     super(scene, x, y, "player");
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.PlayerGroup.add(this);
+    this.setCollideWorldBounds(true);
     this.setSize(this.width * 0.7, this.height * 0.7);
     this.cursors = this._createControls();
     this.mouse = scene.input.mousePointer;
     this.speed = 100;
-    this.setDepth(100);
+    this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
     this.weapon = new ActiveWeapon(this, {
       fireInterval: 100,
       projectiles: [
         {
-          max_duration: 211,
-          damage: 200,
-          speed: 40,
+          max_duration: 250,
+          damage: 250,
+          speed: 90,
           shot_angle: 0
-        },
-        {
-          max_duration: 211,
-          damage: 100,
-          speed: 40,
-          shot_angle: -0.4
-        },
-        {
-          max_duration: 211,
-          damage: 100,
-          speed: 40,
-          shot_angle: 0.4
         }
       ]
     });
@@ -81668,6 +81666,7 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
     return vec.angle();
   }
   update() {
+    const camera_rotation = -this.scene.cameras.main.rotation;
     let vel = import_phaser2.default.Math.Vector2.ZERO.clone();
     if (this.cursors.A?.isDown) {
       vel.x = -1;
@@ -81681,14 +81680,17 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
     }
     vel.normalize();
     vel.scale(this.speed);
+    vel.rotate(camera_rotation);
     this.setVelocity(vel.x, vel.y);
+    this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
+    this.setRotation(camera_rotation);
     const state = {
       x: this.x,
       y: this.y,
       velocity: [vel.x, vel.y],
       is_shooting: this.weapon?.autoShootOn || false,
       inventory: [0],
-      shots: [0]
+      shots: this.shots || []
     };
     socket4.emit("PLAYER_STATE", state);
   }
@@ -81699,7 +81701,6 @@ var getGroundTypes = fetch("/rotmg/json/GroundTypes.json").then((r) => r.text())
 
 // src/Enemy.ts
 var import_phaser3 = __toESM(require_phaser(), 1);
-
 class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
   max_health;
   health;
@@ -81710,7 +81711,8 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     scene.EnemyGroup.add(this);
     this.setSize(this.width * 0.7, this.height * 0.7);
-    this.setDepth(100);
+    this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
+    this.setOrigin(0.5, 1);
     this.max_health = 60000;
     this.health = this.max_health;
     this.healthBar = scene.add.graphics();
@@ -81718,13 +81720,16 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
     this.healthBar.setDepth(101);
     this.healthBar.y = this.y - 20;
   }
-  handle_hit_by(projectile) {
-    this.health -= projectile.damage;
+  dealDamage(damage) {
+    this.health -= damage;
     this.updateHealthBar();
     if (this.health <= 0) {
       this.healthBar.destroy();
-      this.destroy();
+      this.disableBody(true, true);
     }
+  }
+  handleHitByProjectile(projectile) {
+    this.dealDamage(projectile.damage);
   }
   updateHealthBar() {
     this.healthBar.clear();
@@ -81733,6 +81738,10 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
     this.healthBar.fillStyle(65280, 1);
     const healthWidth = this.health / this.max_health * 60;
     this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
+  }
+  update() {
+    this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
+    this.setRotation(-this.scene.cameras.main.rotation);
   }
 }
 
@@ -81749,6 +81758,8 @@ class WorldScene extends import_phaser4.default.Scene {
   EnemyGroup;
   EnemyProjectileGroup;
   enemy;
+  rotate_left;
+  rotate_right;
   constructor() {
     super({ key: "WorldScene" });
   }
@@ -81769,7 +81780,10 @@ class WorldScene extends import_phaser4.default.Scene {
       "lofiEnvironment",
       "lofiEnvironment2",
       "lofiEnvironment3",
+      "lofiObj2",
       "lofiObj3",
+      "lofiObj4",
+      "lofiProjs",
       "lostHallsObjects8x8",
       "magicWoodsObjects8x8",
       "mountainTempleObjects8x8",
@@ -81811,6 +81825,8 @@ class WorldScene extends import_phaser4.default.Scene {
       }
       const x = data.x;
       const y = data.y;
+      this.physics.world.setBounds(32, 32, (data.tile_width - 10) * this.TILE_SIZE, (data.tile_height - 10) * this.TILE_SIZE);
+      this.physics.world.setBoundsCollision(true, true, true, true);
       this.player = new Player(this, x, y);
       this.cameras.main.startFollow(this.player);
     });
@@ -81820,6 +81836,8 @@ class WorldScene extends import_phaser4.default.Scene {
         this.load_player_tile(key, map2[key]);
       }
     });
+    this.rotate_left = this.input.keyboard.addKey("Q");
+    this.rotate_right = this.input.keyboard.addKey("E");
     this.PlayerGroup = this.physics.add.group();
     this.PlayerProjectileGroup = this.physics.add.group();
     this.EnemyGroup = this.physics.add.group();
@@ -81844,11 +81862,16 @@ class WorldScene extends import_phaser4.default.Scene {
         this.offsetted = true;
       }
     });
+    const reset_rotate_key = this.input.keyboard.addKey("Z");
+    reset_rotate_key.addListener("up", () => {
+      this.cameras.main.rotation = 0;
+    });
     this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
     this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p, e) => {
-      p.handle_hit(e);
-      e.handle_hit_by(p);
+      p.handleHit(e);
+      e.handleHitByProjectile(p);
     });
+    readyForSocket();
   }
   _get_texture_from_tile(tile) {
     return tile["Texture"]["File"];
@@ -81882,7 +81905,14 @@ class WorldScene extends import_phaser4.default.Scene {
     }
   }
   update(time, delta) {
+    if (this.rotate_left.isDown) {
+      this.cameras.main.rotation += 0.02;
+    }
+    if (this.rotate_right.isDown) {
+      this.cameras.main.rotation -= 0.02;
+    }
     this.player?.update();
+    this.enemy?.update();
   }
 }
 
