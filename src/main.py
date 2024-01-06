@@ -9,7 +9,8 @@ import threading
 import time
 
 from worlds import world
-from player import Archer
+from player import Archer, PlayerData
+from events import EventSink, event
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -34,29 +35,30 @@ def serve(name):
         name
     )
 
-def client_handler(room: str):
-    """
-    This function is run in a thread, and handles sending the client initialization data
-    as well as an accurate state of the world.
-    """
-    player = Archer(world) # session should identify a config to load the player from db
-    sessions[room] = (player)
 
-    socketio.emit('PLAYER_WORLD_INIT', player.get_initialization_data(), to=room)
+class ClientHandler(EventSink):
+    def __init__(self, room):
+        self.room = room
+    
+    def handle(self):
+        self.player = Archer(world, PlayerData()) # session should identify a config to load the player from db
+        sessions[self.room] = (self.player)
 
-    while 1:
-        # stop sending data if client no longer exists
-        if room not in sessions:
-            print("Client no longer connected, stop sending data.")
-            player.destroy()
-            return
+        socketio.emit('PLAYER_WORLD_INIT', self.player.get_initialization_data(), to=self.room)
 
-        socketio.emit('WORLD_STATE', player.get_world_state(), to=room) 
+        while 1:
+            # stop sending data if client no longer exists
+            if self.room not in sessions:
+                print("Client no longer connected, stop sending data.")
+                self.player.destroy()
 
-        # also broadcast this players state to all other players
-     
-        
-        time.sleep(0.01)
+                emit("PLAYER_LEAVE", {"id": self.room}, broadcast=True, include_self=False)
+                return
+
+            socketio.emit('WORLD_STATE', self.player.get_world_state(), to=self.room) 
+
+            # also broadcast this players state to all other players
+            time.sleep(1/30)
 
 
 @socketio.on('disconnect')
@@ -84,13 +86,13 @@ def M_HELLO_SERVER(data: dict):
         # also will send client data
     )
 
-    thread = threading.Thread(None, client_handler, args=[session_token])
-    sessions[session_token] = ()
-    thread.daemon = True
-    thread.start()
+    time.sleep(5)
 
     print(f"New client {session_token} connected.")
     socketio.emit('HELLO_CLIENT', response)
+
+    # run handler in this same socket context
+    ClientHandler(session_token).handle()
 
 
 @socketio.on('PLAYER_STATE')
@@ -115,6 +117,8 @@ def M_PLAYER_STATE(data: dict):
     player.looking = looking 
     player.inventory = inventory
     player.shots = shots
+
+
 
     emit('PLAYER_STATE', {
         'id': request.sid,

@@ -78931,10 +78931,10 @@ var require_phaser = __commonJS((exports, module) => {
 });
 
 // src/main.ts
-var import_phaser6 = __toESM(require_phaser(), 1);
+var import_phaser7 = __toESM(require_phaser(), 1);
 
 // src/WorldScene.ts
-var import_phaser5 = __toESM(require_phaser(), 1);
+var import_phaser6 = __toESM(require_phaser(), 1);
 
 // src/Player.ts
 var import_phaser2 = __toESM(require_phaser(), 1);
@@ -78972,7 +78972,7 @@ class Projectile extends import_phaser.default.Physics.Arcade.Sprite {
   }
 }
 
-// src/Weapon.ts
+// src/ActiveWeapon.ts
 class ActiveWeapon {
   isShooting = false;
   autoShootOn = false;
@@ -79006,44 +79006,6 @@ class ActiveWeapon {
         this.stopShooting();
       }
     });
-  }
-  startShooting() {
-    if (this.isShooting)
-      return;
-    const world = this.player.scene;
-    this.isShooting = true;
-    this.shotInterval = setInterval(() => {
-      for (let projectile of this.projectilesDefinitions) {
-        new Projectile(world, this.player.x, this.player.y, "projectile", {
-          ...projectile,
-          player_looking: this.player.looking()
-        });
-      }
-    }, this.fireInterval);
-  }
-  stopShooting() {
-    if (!this.isShooting)
-      return;
-    this.isShooting = false;
-    clearInterval(this.shotInterval);
-  }
-  update() {
-  }
-}
-
-class RemoteActiveWeapon {
-  isShooting = false;
-  fireInterval;
-  projectilesDefinitions;
-  projectiles;
-  shotInterval;
-  player;
-  constructor(player, weaponDefinition) {
-    this.player = player;
-    const { projectiles, fireInterval } = weaponDefinition;
-    this.projectilesDefinitions = projectiles;
-    this.fireInterval = fireInterval;
-    this.projectiles = [];
   }
   startShooting() {
     if (this.isShooting)
@@ -81788,8 +81750,82 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
 }
 
 // src/RemotePlayer.ts
+var import_phaser5 = __toESM(require_phaser(), 1);
+
+// src/RemoteProjectile.ts
 var import_phaser4 = __toESM(require_phaser(), 1);
-class RemotePlayer extends import_phaser4.default.Physics.Arcade.Sprite {
+
+class RemoteProjectile extends import_phaser4.default.Physics.Arcade.Sprite {
+  speed;
+  shot_angle;
+  max_duration;
+  damage;
+  constructor(scene, x, y, sprite_key, projectileConfig) {
+    super(scene, x, y, "lofiProjs", 46);
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
+    scene.RemotePlayerProjectileGroup.add(this);
+    const { max_duration, damage, speed, player_looking, shot_angle } = projectileConfig;
+    this.speed = speed;
+    this.shot_angle = shot_angle;
+    this.max_duration = max_duration;
+    this.damage = damage;
+    this.setDepth(101);
+    this.setOrigin(0, 0.5);
+    setTimeout(() => this.destroy(), this.max_duration);
+    const vector = import_phaser4.default.Math.Vector2.ONE.clone();
+    const actual_angle = import_phaser4.default.Math.Angle.WrapDegrees(this.shot_angle + player_looking);
+    vector.setAngle(actual_angle);
+    vector.scale(this.speed);
+    this.setAngle(import_phaser4.default.Math.RadToDeg(actual_angle));
+    this.setVelocity(vector.x, vector.y);
+  }
+  handleHit(enemy) {
+    this.destroy();
+  }
+}
+
+// src/RemoteActiveWeapon.ts
+class RemoteActiveWeapon {
+  isShooting = false;
+  fireInterval;
+  projectilesDefinitions;
+  projectiles;
+  shotInterval;
+  player;
+  constructor(player, weaponDefinition) {
+    this.player = player;
+    const { projectiles, fireInterval } = weaponDefinition;
+    this.projectilesDefinitions = projectiles;
+    this.fireInterval = fireInterval;
+    this.projectiles = [];
+  }
+  startShooting() {
+    if (this.isShooting)
+      return;
+    const world = this.player.scene;
+    this.isShooting = true;
+    this.shotInterval = setInterval(() => {
+      for (let projectile of this.projectilesDefinitions) {
+        new RemoteProjectile(world, this.player.x, this.player.y, "projectile", {
+          ...projectile,
+          player_looking: this.player.looking()
+        });
+      }
+    }, this.fireInterval);
+  }
+  stopShooting() {
+    if (!this.isShooting)
+      return;
+    this.isShooting = false;
+    clearInterval(this.shotInterval);
+  }
+  update() {
+  }
+}
+
+// src/RemotePlayer.ts
+class RemotePlayer extends import_phaser5.default.Physics.Arcade.Sprite {
   weapon;
   shots;
   looking_angle;
@@ -81823,7 +81859,7 @@ class RemotePlayer extends import_phaser4.default.Physics.Arcade.Sprite {
 }
 
 // src/WorldScene.ts
-class WorldScene extends import_phaser5.default.Scene {
+class WorldScene extends import_phaser6.default.Scene {
   worldData;
   TILE_SIZE = 8;
   visibleTiles = {};
@@ -81833,6 +81869,7 @@ class WorldScene extends import_phaser5.default.Scene {
   offsetted;
   PlayerGroup;
   PlayerProjectileGroup;
+  RemotePlayerProjectileGroup;
   EnemyGroup;
   EnemyProjectileGroup;
   enemy;
@@ -81886,7 +81923,7 @@ class WorldScene extends import_phaser5.default.Scene {
         this.groundTypes[parseInt(tile.type)] = tile;
       }
     });
-    this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
+    this.load.spritesheet("player", "rotmg/sheets/players.png", {
       frameWidth: 8,
       frameHeight: 8
     });
@@ -81929,12 +81966,18 @@ class WorldScene extends import_phaser5.default.Scene {
         this.remotePlayers[id].weapon.stopShooting();
       }
     });
+    socket4.on("PLAYER_LEAVE", (data) => {
+      const { id } = data;
+      this.remotePlayers[id]?.destroy();
+      delete this.remotePlayers[id];
+    });
     this.rotate_left = this.input.keyboard.addKey("Q");
     this.rotate_right = this.input.keyboard.addKey("E");
     this.PlayerGroup = this.physics.add.group();
     this.PlayerProjectileGroup = this.physics.add.group();
     this.EnemyGroup = this.physics.add.group();
     this.EnemyProjectileGroup = this.physics.add.group();
+    this.RemotePlayerProjectileGroup = this.physics.add.group();
     this.cameras.main.zoom = 4;
     const minus_key = this.input.keyboard.addKey("O");
     const plus_key = this.input.keyboard.addKey("P");
@@ -81963,6 +82006,9 @@ class WorldScene extends import_phaser5.default.Scene {
     this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p, e) => {
       p.handleHit(e);
       e.handleHitByProjectile(p);
+    });
+    this.physics.add.overlap(this.RemotePlayerProjectileGroup, this.EnemyGroup, (p, e) => {
+      p.handleHit(e);
     });
     readyForSocket();
   }
@@ -82014,7 +82060,7 @@ class WorldScene extends import_phaser5.default.Scene {
 
 // src/main.ts
 var config = {
-  type: import_phaser6.default.AUTO,
+  type: import_phaser7.default.AUTO,
   width: 1024,
   height: 576,
   physics: {
@@ -82024,11 +82070,11 @@ var config = {
     }
   },
   scale: {
-    mode: import_phaser6.default.Scale.FIT,
-    autoCenter: import_phaser6.default.Scale.CENTER_BOTH
+    mode: import_phaser7.default.Scale.FIT,
+    autoCenter: import_phaser7.default.Scale.CENTER_BOTH
   },
   scene: [WorldScene],
   backgroundColor: "#000000",
   pixelArt: true
 };
-var game = new import_phaser6.default.Game(config);
+var game = new import_phaser7.default.Game(config);

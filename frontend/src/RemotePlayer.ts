@@ -4,7 +4,7 @@
  */
 
 import Phaser from "phaser";
-import {RemoteActiveWeapon} from "./Weapon";
+import { RemoteActiveWeapon } from "./RemoteActiveWeapon";
 import { EntityDepthFunctions } from "./EntityDepths";
 
 export default class RemotePlayer extends Phaser.Physics.Arcade.Sprite {
@@ -27,14 +27,14 @@ export default class RemotePlayer extends Phaser.Physics.Arcade.Sprite {
         this.weapon = new RemoteActiveWeapon(this, {
             fireInterval: 100,
             projectiles: [
-              {
-                max_duration: 250,
-                damage: 250,
-                speed: 180 / 2,
-                shot_angle: 0
-              },
-            ]
-          });
+                {
+                    max_duration: 250,
+                    damage: 250,
+                    speed: 180 / 2,
+                    shot_angle: 0,
+                },
+            ],
+        });
     }
 
     public looking(): number {

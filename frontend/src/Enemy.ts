@@ -1,14 +1,20 @@
-import Phaser from 'phaser';
-import type WorldScene from './WorldScene';
-import type Projectile from './Projectile';
-import { EntityDepthFunctions } from './EntityDepths';
+import Phaser from "phaser";
+import type WorldScene from "./WorldScene";
+import type Projectile from "./Projectile";
+import { EntityDepthFunctions } from "./EntityDepths";
 
 export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     max_health: number;
     health: number;
     healthBar: Phaser.GameObjects.Graphics;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, sprite_key: string, sprite_index: integer) {
+    constructor(
+        scene: Phaser.Scene,
+        x: number,
+        y: number,
+        sprite_key: string,
+        sprite_index: integer
+    ) {
         super(scene, x, y, sprite_key, sprite_index);
 
         scene.add.existing(this);
@@ -56,18 +62,17 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         // Clear the previous health bar
         this.healthBar.clear();
 
-        // Draw the background of the health bar
-        this.healthBar.fillStyle(0xFF0000, 1);
+        this.healthBar.fillStyle(0xff0000, 1);
         this.healthBar.fillRect(this.x - 30, this.healthBar.y, 60, 5);
 
-        // Draw the current health
-        this.healthBar.fillStyle(0x00FF00, 1);
+        this.healthBar.fillStyle(0x00ff00, 1);
         const healthWidth = (this.health / this.max_health) * 60;
         this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
     }
 
-    update () {
+    update() {
         this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
+        // @ts-ignore
         this.setRotation(-this.scene.cameras.main.rotation);
     }
 }

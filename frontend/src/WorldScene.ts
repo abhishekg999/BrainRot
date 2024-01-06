@@ -1,15 +1,11 @@
 import Phaser from "phaser";
 import Player from "./Player";
-import { getObjects } from "./Objects";
 import { getGroundTypes } from "./GroundTypes";
 import Enemy from "./Enemy";
 import type Projectile from "./Projectile";
 import { readyForSocket, socket } from "./Networking";
 import RemotePlayer from "./RemotePlayer";
-
-const random_choice = (l: any[]) => {
-    return l[Math.floor(Math.random() * l.length)];
-};
+import type RemoteProjectile from "./RemoteProjectile";
 
 export default class WorldScene extends Phaser.Scene {
     private worldData: {
@@ -21,12 +17,13 @@ export default class WorldScene extends Phaser.Scene {
     private readonly TILE_SIZE = 8;
     private visibleTiles: { [key: number]: number } = {};
     player: Player | undefined;
-    remotePlayers: {[key: string]: RemotePlayer} = {}; 
+    remotePlayers: { [key: string]: RemotePlayer } = {};
     groundTypes: { [key: number]: object } = {};
     offsetted: boolean;
 
     PlayerGroup: Phaser.Physics.Arcade.Group;
     PlayerProjectileGroup: Phaser.Physics.Arcade.Group;
+    RemotePlayerProjectileGroup: Phaser.Physics.Arcade.Group;
     EnemyGroup: Phaser.Physics.Arcade.Group;
     EnemyProjectileGroup: Phaser.Physics.Arcade.Group;
 
@@ -73,27 +70,23 @@ export default class WorldScene extends Phaser.Scene {
             "theMachineObjects8x8",
             "xmasNexusObjects8x8",
         ];
-
         for (let tileset of groundTileSets) {
             this.load.spritesheet(tileset, `rotmg/sheets/${tileset}.png`, {
                 frameWidth: 8,
                 frameHeight: 8,
             });
         }
-
         getGroundTypes.then((data) => {
             for (let tile of data) {
                 // @ts-ignore
                 this.groundTypes[parseInt(tile.type)] = tile;
             }
         });
-
         // Player sprites
-        this.load.spritesheet("player", "rotmg/sheets/playersSkins.png", {
+        this.load.spritesheet("player", "rotmg/sheets/players.png", {
             frameWidth: 8,
             frameHeight: 8,
         });
-
         // Enemy sprites
         this.load.spritesheet(
             "archbishopChars16x16",
@@ -138,13 +131,13 @@ export default class WorldScene extends Phaser.Scene {
         });
 
         socket.on("PLAYER_STATE", (data) => {
-            const {id, x, y, looking, is_shooting} = data;
+            const { id, x, y, looking, is_shooting } = data;
             if (id in this.remotePlayers) {
                 this.remotePlayers[id].x = x;
-                this.remotePlayers[id].y = y;                
+                this.remotePlayers[id].y = y;
             } else {
                 this.remotePlayers[id] = new RemotePlayer(this, x, y, id);
-            }     
+            }
 
             this.remotePlayers[id].looking_angle = looking;
             if (is_shooting) {
@@ -154,6 +147,11 @@ export default class WorldScene extends Phaser.Scene {
             }
         });
 
+        socket.on("PLAYER_LEAVE", (data) => {
+            const { id } = data;
+            this.remotePlayers[id]?.destroy();
+            delete this.remotePlayers[id];
+        });
 
         this.rotate_left = this.input.keyboard.addKey("Q");
         this.rotate_right = this.input.keyboard.addKey("E");
@@ -163,6 +161,7 @@ export default class WorldScene extends Phaser.Scene {
         this.PlayerProjectileGroup = this.physics.add.group();
         this.EnemyGroup = this.physics.add.group();
         this.EnemyProjectileGroup = this.physics.add.group();
+        this.RemotePlayerProjectileGroup = this.physics.add.group();
 
         this.cameras.main.zoom = 4;
 
@@ -208,6 +207,15 @@ export default class WorldScene extends Phaser.Scene {
             e.handleHitByProjectile(p);
         }) as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback);
 
+        this.physics.add.overlap(
+            this.RemotePlayerProjectileGroup,
+            this.EnemyGroup,
+            ((p: RemoteProjectile, e: Enemy) => {
+                p.handleHit(e);
+                // dont do anything for enemy
+            }) as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback
+        );
+
         // WORLD IS NOW READY
         readyForSocket();
     }
@@ -236,9 +244,9 @@ export default class WorldScene extends Phaser.Scene {
             this.visibleTiles[[y, x]] = this.add.sprite(
                 x * this.TILE_SIZE,
                 y * this.TILE_SIZE,
-                "alienInvasionObjects8x8",
+                "alienInvasionObjects8x8", // just a black tile
                 0
-            ); // just a black tile
+            ); 
         }
     }
 

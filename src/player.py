@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import TypeAlias, override
 import random
-
+from dataclasses import dataclass, field, asdict
 from utils import IncrementingUniqueID
 
 PLAYER_WIDTH = 32
@@ -14,6 +14,28 @@ RING_INDEX = 3
 
 BASE_INVENTORY_SIZE = 8
 
+
+@dataclass
+class PlayerData:
+    x: int = 0
+    y: int = 0
+
+    player_class: str = "Archer" # for now
+    level: int = 1
+
+    health: int = 100
+    attack: int = 10
+    dexterity: int = 10
+    speed: int = 10
+    defense: int = 10
+
+    looking: int = 0
+    is_shooting: bool = False
+    inventory_size: int = BASE_INVENTORY_SIZE
+    inventory: list[int] = field(default_factory=list)
+
+   
+
 class Player(ABC):
     """
     Static Class properties:
@@ -24,7 +46,7 @@ class Player(ABC):
     max_speed
     max_defense
     """
-    def __init__(self, world):
+    def __init__(self, world, data):
         self.id = IncrementingUniqueID.generate()
         self.world = world
         self.world.add_player(self)
@@ -32,39 +54,30 @@ class Player(ABC):
         self.width = PLAYER_WIDTH
         self.height = PLAYER_HEIGHT
 
+        self.config = data
+
+        self.x = self.config.x
+        self.y = self.config.y
+        self.looking = self.config.looking
+        self.is_shooting = self.config.is_shooting
+
         # class specific method for custom initialization
-        self.initialize_class()
+        self.initialize_class(data)
         
-        self.x = 100
-        self.y = 100
-
-        self.health     = 100
-        self.attack     = 10
-        self.dexterity  = 10
-        self.speed      = 10
-        self.defense    = 0
-
-        self.level      = 1
-
-        self.looking = 0
-        self.is_shooting = False
-        self.inventory_size = 8
-
         """
         Inventory
         [0-3] WEAPON | ABILITY | ARMOR | RING 
         [4-7] 
         [8-11]
         """
-        self._inventory = [None for _ in range(4 + self.inventory_size)]
+        # self._inventory = [None for _ in range(4 + self.inventory_size)]
         
     
     @abstractmethod
-    def initialize_class(self) -> None: ...
+    def initialize_class(self, config) -> None: ...
 
     def get_initialization_data(self) -> dict:
-        loading_radius = 20
-        tile_data = self.world._get_tiles_in_radius_around_position(self.x, self.y, loading_radius)
+        tile_data = self.world.get_tiles_to_load(self)
 
         data = {
             'x': self.x,
@@ -76,8 +89,7 @@ class Player(ABC):
         return data
     
     def get_world_state(self) -> dict:
-        loading_radius = 20
-        tile_data = self.world._get_tiles_in_radius_around_position(self.x, self.y, loading_radius)
+        tile_data = self.world.get_tiles_to_load(self)
 
         data = {
             'map': tile_data,
@@ -92,13 +104,12 @@ class Player(ABC):
     def destroy(self):
         self.world.remove_player(self)
 
-    
+
 class Archer(Player):
-    def __init__(self, world):
-        super().__init__(world)
+    def __init__(self, world, data):
+        super().__init__(world, data)
 
-
-    def initialize_class(self) -> None:
+    def initialize_class(self, data) -> None:
         self.max_health     = 700
         self.max_attack     = 60
         self.max_dexterity  = 60
@@ -110,3 +121,5 @@ class Archer(Player):
 
 
     
+if __name__ == "__main__":
+    print(asdict(PlayerData(1, 1)))

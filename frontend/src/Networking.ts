@@ -7,6 +7,11 @@ socket.on('HELLO_CLIENT', (d) => {
     // Then allow client to select world, etc
 })
 
+
+/**
+ * Call this from the WorldScene once its setup and ready to handle
+ * websocket communication.
+ */
 export const readyForSocket = () => {
     // Login information to be validated
     socket.emit("HELLO_SERVER", {
