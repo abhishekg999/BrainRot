@@ -81637,8 +81637,9 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
   mouse;
   weapon;
   shots;
+  damage_dealt = {};
   constructor(scene, x, y) {
-    super(scene, x, y, "player");
+    super(scene, x, y, "player", 21);
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.PlayerGroup.add(this);
@@ -81694,9 +81695,10 @@ class Player extends import_phaser2.default.Physics.Arcade.Sprite {
       is_shooting: this.weapon?.isShooting || false,
       looking: this.looking(),
       inventory: [0],
-      shots: this.shots || []
+      damage_dealt: this.damage_dealt
     };
     socket4.emit("PLAYER_STATE", state);
+    this.damage_dealt = {};
   }
 }
 
@@ -81709,8 +81711,10 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
   max_health;
   health;
   healthBar;
-  constructor(scene, x, y, sprite_key, sprite_index) {
+  id;
+  constructor(scene, x, y, id, sprite_key, sprite_index) {
     super(scene, x, y, sprite_key, sprite_index);
+    this.id = id;
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.EnemyGroup.add(this);
@@ -81720,32 +81724,44 @@ class Enemy extends import_phaser3.default.Physics.Arcade.Sprite {
     this.max_health = 60000;
     this.health = this.max_health;
     this.healthBar = scene.add.graphics();
+    this.healthBar.setDepth(99999);
     this.updateHealthBar();
-    this.healthBar.setDepth(101);
-    this.healthBar.y = this.y - 20;
+  }
+  died() {
+    this.healthBar.destroy();
+    this.disableBody(true, true);
+  }
+  setHealth(health) {
+    this.health = health;
+    this.updateHealthBar();
   }
   dealDamage(damage) {
-    this.health -= damage;
-    this.updateHealthBar();
-    if (this.health <= 0) {
-      this.healthBar.destroy();
-      this.disableBody(true, true);
-    }
+    this.setHealth(this.health - damage);
   }
   handleHitByProjectile(projectile) {
     this.dealDamage(projectile.damage);
+    const projectile_player = projectile.scene.player;
+    if (this.id in projectile_player.damage_dealt) {
+      projectile_player.damage_dealt[this.id] += projectile.damage;
+    } else {
+      projectile_player.damage_dealt[this.id] = projectile.damage;
+    }
   }
   updateHealthBar() {
+    const { x, y, health, max_health, width } = this;
+    const barWidth = width * 1.2;
     this.healthBar.clear();
-    this.healthBar.fillStyle(16711680, 1);
-    this.healthBar.fillRect(this.x - 30, this.healthBar.y, 60, 5);
-    this.healthBar.fillStyle(65280, 1);
-    const healthWidth = this.health / this.max_health * 60;
-    this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
+    this.healthBar.fillStyle(0);
+    this.healthBar.fillRect(x - barWidth / 2, y - 30, barWidth, 5);
+    const healthPercentage = Math.max(0, health / max_health);
+    const fillColor = healthPercentage > 0.5 ? 65280 : 16711680;
+    this.healthBar.fillStyle(fillColor);
+    this.healthBar.fillRect(x - barWidth / 2, y - 30, barWidth * healthPercentage, 5);
   }
   update() {
     this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
     this.setRotation(-this.scene.cameras.main.rotation);
+    this.updateHealthBar();
   }
 }
 
@@ -81831,7 +81847,7 @@ class RemotePlayer extends import_phaser5.default.Physics.Arcade.Sprite {
   looking_angle;
   id;
   constructor(scene, x, y, id) {
-    super(scene, x, y, "player");
+    super(scene, x, y, "player", 21);
     this.id = id;
     scene.add.existing(this);
     this.setDepth(EntityDepthFunctions.PLAYER_DEPTH(this.y));
@@ -81872,7 +81888,7 @@ class WorldScene extends import_phaser6.default.Scene {
   RemotePlayerProjectileGroup;
   EnemyGroup;
   EnemyProjectileGroup;
-  enemy;
+  enemies = {};
   rotate_left;
   rotate_right;
   constructor() {
@@ -81950,6 +81966,22 @@ class WorldScene extends import_phaser6.default.Scene {
       for (let key in map2) {
         this.load_player_tile(key, map2[key]);
       }
+      const enemies = data.enemies;
+      for (let enemy_id in enemies) {
+        const enemy = enemies[enemy_id];
+        if (enemy_id in this.enemies) {
+          this.enemies[enemy_id].setHealth(enemy.health);
+          this.enemies[enemy_id].x = enemy.x;
+          this.enemies[enemy_id].y = enemy.y;
+          if (!enemy.alive) {
+            this.enemies[enemy_id].died();
+            this.enemies[enemy_id].destroy();
+            delete this.enemies[enemy_id];
+          }
+        } else {
+          this.enemies[enemy_id] = new Enemy(this, enemy.x, enemy.y, enemy_id, "archbishopChars16x16", 7);
+        }
+      }
     });
     socket4.on("PLAYER_STATE", (data) => {
       const { id, x, y, looking, is_shooting } = data;
@@ -81965,6 +81997,7 @@ class WorldScene extends import_phaser6.default.Scene {
       } else {
         this.remotePlayers[id].weapon.stopShooting();
       }
+      this.remotePlayers[id].update();
     });
     socket4.on("PLAYER_LEAVE", (data) => {
       const { id } = data;
@@ -82002,10 +82035,9 @@ class WorldScene extends import_phaser6.default.Scene {
     reset_rotate_key.addListener("up", () => {
       this.cameras.main.rotation = 0;
     });
-    this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
     this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, (p, e) => {
-      p.handleHit(e);
       e.handleHitByProjectile(p);
+      p.handleHit(e);
     });
     this.physics.add.overlap(this.RemotePlayerProjectileGroup, this.EnemyGroup, (p, e) => {
       p.handleHit(e);
@@ -82051,10 +82083,9 @@ class WorldScene extends import_phaser6.default.Scene {
       this.cameras.main.rotation -= 0.02;
     }
     this.player?.update();
-    for (const key in this.remotePlayers) {
-      this.remotePlayers[key].update();
+    for (let enemy_id in this.enemies) {
+      this.enemies[enemy_id].update();
     }
-    this.enemy?.update();
   }
 }
 

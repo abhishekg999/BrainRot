@@ -14,7 +14,7 @@ export default class RemotePlayer extends Phaser.Physics.Arcade.Sprite {
     id: string;
 
     constructor(scene: Phaser.Scene, x: number, y: number, id: string) {
-        super(scene, x, y, "player");
+        super(scene, x, y, "player", 7*3);
 
         this.id = id;
         scene.add.existing(this);

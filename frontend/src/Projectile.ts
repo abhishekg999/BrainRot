@@ -14,13 +14,14 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene: Phaser.Scene, x: number, y: number, sprite_key: string, projectileConfig: any) {
         super(scene, x, y, 'lofiProjs', 0x2e);
-        
+
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
         (scene as WorldScene).PlayerProjectileGroup.add(this);
         const { max_duration, damage, speed, player_looking, shot_angle } = projectileConfig;
-        
+
+
         this.speed = speed;
         this.shot_angle = shot_angle; // relative to player looking for now
         this.max_duration = max_duration;
@@ -41,7 +42,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
 
         // change the sprite angle, this is currently wrong tho
         this.setAngle(Phaser.Math.RadToDeg(actual_angle));
-
 
         this.setVelocity(vector.x, vector.y);
     }

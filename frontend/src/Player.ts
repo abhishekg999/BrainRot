@@ -18,8 +18,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     weapon: ActiveWeapon;
     shots: any;
 
+    damage_dealt: {[key: number]: number} = {};
+
     constructor(scene: Phaser.Scene, x: number, y: number) {
-        super(scene, x, y, "player");
+        super(scene, x, y, "player", 7*3);
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -99,9 +101,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             is_shooting: this.weapon?.isShooting || false,
             looking: this.looking(),
             inventory: [0],
-            shots: this.shots || [],
+            damage_dealt: this.damage_dealt,
         };
 
         socket.emit("PLAYER_STATE", state);
+
+        // once data is sent, we can reset the damage_dealt object.
+        this.damage_dealt = {};
     }
 }

@@ -7,16 +7,19 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     max_health: number;
     health: number;
     healthBar: Phaser.GameObjects.Graphics;
+    id: number;
 
     constructor(
         scene: Phaser.Scene,
         x: number,
         y: number,
+        id: number,
         sprite_key: string,
         sprite_index: integer
     ) {
         super(scene, x, y, sprite_key, sprite_index);
-
+        this.id = id;
+        
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
@@ -34,45 +37,65 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
 
         // Create the health bar
         this.healthBar = scene.add.graphics();
+        this.healthBar.setDepth(99999);
         this.updateHealthBar();
+    }
 
-        // Adjust the health bar position as needed
-        this.healthBar.setDepth(101);
-        this.healthBar.y = this.y - 20;
+    public died() {
+        this.healthBar.destroy();
+        this.disableBody(true, true);
+    }
+
+    public setHealth(health: number) {
+        this.health = health;
+        // Update the health bar when hit
+        this.updateHealthBar();
     }
 
     public dealDamage(damage: number) {
-        this.health -= damage;
-
-        // Update the health bar when hit
-        this.updateHealthBar();
-
-        if (this.health <= 0) {
-            // Enemy defeated, handle accordingly
-            this.healthBar.destroy();
-            this.disableBody(true, true);
-        }
+        this.setHealth(this.health - damage);
     }
 
     public handleHitByProjectile(projectile: Projectile) {
         this.dealDamage(projectile.damage);
+
+        // TODO: probably want to give projectile a reference to weapon so it can access player from that
+        const projectile_player = (projectile.scene as WorldScene).player;
+
+        if (this.id in projectile_player.damage_dealt) {
+            projectile_player.damage_dealt[this.id] += projectile.damage;
+        } else {
+            projectile_player.damage_dealt[this.id] = projectile.damage;
+        }
+        
     }
 
     private updateHealthBar() {
-        // Clear the previous health bar
+        const { x, y, health, max_health, width } = this;
+        const barWidth = width * 1.2; // Adjust the width of the health bar
+    
+        // Clear previous health bar
         this.healthBar.clear();
-
-        this.healthBar.fillStyle(0xff0000, 1);
-        this.healthBar.fillRect(this.x - 30, this.healthBar.y, 60, 5);
-
-        this.healthBar.fillStyle(0x00ff00, 1);
-        const healthWidth = (this.health / this.max_health) * 60;
-        this.healthBar.fillRect(this.x - 30, this.healthBar.y, healthWidth, 5);
+    
+        // Draw the background of the health bar
+        this.healthBar.fillStyle(0x000000);
+        this.healthBar.fillRect(x - barWidth / 2, y - 30, barWidth, 5);
+    
+        // Calculate the percentage of health remaining
+        const healthPercentage = Math.max(0, health / max_health);
+    
+        // Determine the color based on health percentage
+        const fillColor = (healthPercentage > 0.5) ? 0x00ff00 : 0xff0000;
+    
+        // Draw the actual health bar
+        this.healthBar.fillStyle(fillColor);
+        this.healthBar.fillRect(x - barWidth / 2, y - 30, barWidth * healthPercentage, 5);
     }
 
     update() {
         this.setDepth(EntityDepthFunctions.ENEMY_DEPTH(this.y));
         // @ts-ignore
         this.setRotation(-this.scene.cameras.main.rotation);
+        this.updateHealthBar();
     }
 }

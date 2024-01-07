@@ -27,7 +27,7 @@ export default class WorldScene extends Phaser.Scene {
     EnemyGroup: Phaser.Physics.Arcade.Group;
     EnemyProjectileGroup: Phaser.Physics.Arcade.Group;
 
-    enemy: Enemy;
+    enemies: {[key: number]: Enemy} = {}
 
     rotate_left: Phaser.Input.Keyboard.Key;
     rotate_right: Phaser.Input.Keyboard.Key;
@@ -128,6 +128,25 @@ export default class WorldScene extends Phaser.Scene {
             for (let key in map) {
                 this.load_player_tile(key, map[key]);
             }
+
+            const enemies: {[key: number]: any} = data.enemies;
+            for (let enemy_id in enemies) {
+                const enemy = enemies[enemy_id];
+                if (enemy_id in this.enemies) {
+                    this.enemies[enemy_id].setHealth(enemy.health);
+                    this.enemies[enemy_id].x = enemy.x;
+                    this.enemies[enemy_id].y = enemy.y;
+
+                    if (!enemy.alive) {
+                        this.enemies[enemy_id].died()
+                        this.enemies[enemy_id].destroy()
+                        delete this.enemies[enemy_id];
+                    };
+                } else {
+                    // @ts-ignore
+                    this.enemies[enemy_id] = new Enemy(this, enemy.x, enemy.y, enemy_id, "archbishopChars16x16", 7);
+                }
+            }
         });
 
         socket.on("PLAYER_STATE", (data) => {
@@ -145,6 +164,8 @@ export default class WorldScene extends Phaser.Scene {
             } else {
                 this.remotePlayers[id].weapon.stopShooting();
             }
+
+            this.remotePlayers[id].update();
         });
 
         socket.on("PLAYER_LEAVE", (data) => {
@@ -195,16 +216,14 @@ export default class WorldScene extends Phaser.Scene {
             this.cameras.main.rotation = 0;
         });
 
-        this.enemy = new Enemy(this, 100, 50, "archbishopChars16x16", 7);
-
         // add collisions between player projectile and enemy
 
         this.physics.add.overlap(this.PlayerProjectileGroup, this.EnemyGroup, ((
             p: Projectile,
             e: Enemy
         ) => {
-            p.handleHit(e);
             e.handleHitByProjectile(p);
+            p.handleHit(e);
         }) as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback);
 
         this.physics.add.overlap(
@@ -276,9 +295,9 @@ export default class WorldScene extends Phaser.Scene {
     }
 
     update(time: number, delta: number): void {
-        // for (let pos in this.visibleTiles) {
-        // 	this._unload_player_tile(pos)
-        // }
+        //for (let pos in this.visibleTiles) {
+        //  	this._unload_player_tile(pos)
+        //}
 
         if (this.rotate_left.isDown) {
             // @ts-ignore
@@ -291,9 +310,15 @@ export default class WorldScene extends Phaser.Scene {
         }
 
         this.player?.update();
-        for (const key in this.remotePlayers) {
-            this.remotePlayers[key].update();
+
+        // Moving this to only update once recieved new remote data from server.
+        // for (const key in this.remotePlayers) {
+        //     this.remotePlayers[key].update();
+        // }
+
+        // Call update method here
+        for (let enemy_id in this.enemies) {
+            this.enemies[enemy_id].update()
         }
-        this.enemy?.update();
     }
 }

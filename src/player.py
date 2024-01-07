@@ -90,9 +90,11 @@ class Player(ABC):
     
     def get_world_state(self) -> dict:
         tile_data = self.world.get_tiles_to_load(self)
+        enemy_data = self.world.get_enemy_data()
 
         data = {
             'map': tile_data,
+            'enemies': enemy_data
         }
         return data
     
